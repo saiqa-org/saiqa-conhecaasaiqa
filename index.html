@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Conheça a SAIQA</title>
+<meta name="description" content="Conheça a SAIQA – Sistema de Avaliação Integrada da Qualidade Ambiental. Veja a história, os recursos e experimente a Escala de Classificação Integrada.">
+<meta name="robots" content="noindex,nofollow">
+
+<!-- Open Graph / preview ao compartilhar o link -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Conheça a SAIQA">
+<meta property="og:description" content="Conheça a SAIQA – Sistema de Avaliação Integrada da Qualidade Ambiental. Veja a história, os recursos e experimente a Escala de Classificação Integrada. Por Andrezza Rosa.">
+<meta property="og:image" content="https://saiqa.online/assets/saiqa_logotipo.svg">
+<meta property="og:url" content="https://saiqa.online/conhecaasaiqa/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Conheça a SAIQA">
+<meta name="twitter:description" content="Conheça a SAIQA — Sistema de Avaliação Integrada da Qualidade Ambiental. Veja a história, os recursos e experimente a Escala de Classificação Integrada. Por Andrezza Rosa.">
+<link rel="icon" type="image/svg+xml" href="https://saiqa.online/assets/saiqa_s.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --wave:#2980b9;--accent:#00e5c0;--blush:#d4748a;--ocean:#0d2d4e;--aqua:#41b8d5;
+  --lima:#5CDB5C;--foam:#a8dce8;--white:#fff;--deep:#0a1628;--flamingo:#c9546e;
+  --ig-cri:#330066;--ig-des:#ED4D65;--ig-mod:#FF9900;--ig-fav:#00796B;--ig-equ:#0097A7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',Arial,sans-serif;color:var(--white);background:var(--deep);
+  overflow-x:hidden;line-height:1.6;
+}
+h1,h2,h3,.brand{font-family:'Syne',sans-serif;font-weight:800}
+img{max-width:100%;display:block}
+section{position:relative;padding:5rem 1.25rem;overflow:hidden}
+.wrap{width:100%;max-width:760px;margin:0 auto;position:relative;z-index:2}
+.eyebrow{font-family:'Syne',sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.5rem;position:absolute;top:1.5rem;left:1.25rem}
+.eyebrow::before{content:'';width:22px;height:2px;background:var(--accent);display:inline-block}
+h2{font-size:clamp(1.6rem,5vw,2.4rem);line-height:1.2;margin-bottom:1.1rem}
+h2 span{color:var(--accent)}
+p{font-size:clamp(.92rem,2.4vw,1.02rem);color:var(--foam)}
+
+/* ---------- reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.12s}
+.reveal-delay-2{transition-delay:.24s}
+.reveal-delay-3{transition-delay:.36s}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  text-align:center;background:radial-gradient(120% 90% at 50% 0%,var(--ocean) 0%,var(--deep) 60%,var(--deep) 100%);
+  padding:6rem 1.25rem 3rem;
+}
+.hero-bg-s{position:absolute;width:140vw;max-width:1100px;opacity:.05;top:50%;left:50%;transform:translate(-50%,-50%);filter:brightness(0) invert(1);pointer-events:none;z-index:0;animation:spinSlow 90s linear infinite}
+@keyframes spinSlow{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hero-rainbow{position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--aqua),var(--blush),var(--accent),var(--wave),var(--aqua));background-size:200% 100%;animation:rainbowShift 12s linear infinite;z-index:2}
+@keyframes rainbowShift{0%{background-position:0% 0}100%{background-position:200% 0}}
+.hero-tagline{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.3rem,6vw,1.9rem);letter-spacing:.01em;line-height:1.15;text-align:center;position:relative;z-index:2;animation:floaty 5s ease-in-out infinite}
+.hero-tagline .l1{color:var(--aqua);display:block}
+.hero-tagline .l2{color:var(--accent);display:block}
+.hero-spacer{flex:1 1 auto;min-height:1.5rem}
+.hero-row{display:flex;flex-direction:column;align-items:center}
+.hero-logo{width:min(70vw,260px);margin:0 auto 1.5rem;filter:drop-shadow(0 2px 1px rgba(10,22,40,.8));position:relative;z-index:2}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-sub{margin-top:0;color:var(--white);opacity:1;max-width:420px;font-size:1rem;font-weight:500;position:relative;z-index:2}
+.hero-credits{
+  font-family:'Syne',sans-serif;font-size:.88rem;line-height:1.7;color:var(--foam);
+  position:relative;z-index:2;background:none;border:none;
+  text-decoration:none;display:inline-block;cursor:pointer;transition:color .25s,transform .25s;
+}
+.hero-credits:hover{color:var(--blush);transform:translateY(-2px)}
+.hero-scroll{margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--foam);opacity:.7;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;position:relative;z-index:2;text-decoration:none;cursor:pointer;transition:opacity .2s}
+.hero-scroll:hover{opacity:1}
+.hero-scroll .arrow{width:16px;height:16px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);animation:bounceArrow 1.6s ease-in-out infinite}
+@keyframes bounceArrow{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
+
+/* ---------- Par de setinhas (voltar/avançar), reaproveitado no rodapé de blocos individuais ---------- */
+.section-nav{
+  display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;gap:1.75rem;
+  position:absolute;left:0;right:0;bottom:1.5rem;z-index:2;
+}
+.funcionalidades .section-nav{bottom:1rem}
+.section-nav-inline{position:static;margin-top:.9rem}
+.section-scroll,.section-back{display:flex;text-decoration:none;cursor:pointer;opacity:.7;transition:opacity .2s}
+.section-scroll:hover,.section-back:hover{opacity:1}
+.section-scroll .arrow,.section-back .arrow{width:16px;height:16px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent)}
+.section-scroll .arrow{transform:rotate(45deg);margin-top:-2px}
+.section-back .arrow{transform:rotate(225deg);margin-top:2px}
+.autora .section-scroll .arrow,.processo .section-scroll .arrow,.autora .section-back .arrow,.processo .section-back .arrow{border-right-color:var(--ocean);border-bottom-color:var(--ocean)}
+
+/* ---------- SOBRE (sigla + resumo) ---------- */
+.sobre{background:radial-gradient(120% 90% at 50% 0%,var(--ocean) 0%,var(--deep) 60%,var(--deep) 100%)}
+.sigla-row{display:flex;flex-direction:column;gap:.4rem;margin-top:1.5rem;width:fit-content;margin-left:auto;margin-right:auto}
+.sigla-item{display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--foam)}
+.sigla-l{width:2.2rem;height:1.6rem;flex-shrink:0}
+.sobre p.reveal{margin-top:2.25rem}
+
+/* ---------- ORIGEM (timeline) ---------- */
+.origem{background:linear-gradient(180deg,var(--deep) 0%,#0c2036 100%)}
+@media(min-width:900px){
+  .origem{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start;padding-top:2rem;padding-bottom:1.4rem}
+  .origem .timeline{margin-top:1.5rem}
+  .origem .tl-item{padding-bottom:1rem}
+}
+.timeline{margin-top:2.25rem;display:flex;flex-direction:column;gap:0}
+.tl-item{position:relative;padding:0 0 1.5rem 2.1rem;border-left:2px solid rgba(65,184,213,.25)}
+.tl-item:last-child{border-color:transparent;padding-bottom:0}
+.tl-item::before{content:'';position:absolute;left:-7px;top:.2rem;width:12px;height:12px;border-radius:50%;background:var(--tl-c,var(--accent));box-shadow:0 0 0 4px var(--tl-glow,rgba(0,229,192,.15))}
+.tl-item:nth-child(1){--tl-c:var(--aqua);--tl-glow:rgba(65,184,213,.18)}
+.tl-item:nth-child(2){--tl-c:var(--accent);--tl-glow:rgba(0,229,192,.15)}
+.tl-item:nth-child(3){--tl-c:var(--blush);--tl-glow:rgba(212,116,138,.18)}
+.tl-item:nth-child(4){--tl-c:var(--wave);--tl-glow:rgba(41,128,185,.2)}
+.tl-item:nth-child(5){--tl-c:var(--lima);--tl-glow:rgba(92,219,92,.2)}
+.tl-item b{font-family:'Syne',sans-serif;color:var(--white);font-size:.95rem;display:block;margin-bottom:.35rem}
+.tl-item p{font-size:.95rem}
+
+/* ---------- FUNCIONALIDADES (cards) ---------- */
+.funcionalidades{background:var(--ocean)}
+@media(min-width:900px){.funcionalidades{padding-top:2rem;padding-bottom:.9rem;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start}}
+.feat-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1.3rem}
+@media(min-width:640px){.feat-grid{grid-template-columns:1fr 1fr}}
+.feat-card{
+  background:rgba(255,255,255,.035);border:1px solid rgba(65,184,213,.18);border-radius:14px;
+  padding:1rem 1.4rem;transition:transform .3s,border-color .3s,box-shadow .3s;cursor:default;
+}
+.feat-card:hover,.feat-card:active{transform:translateY(-4px);border-color:rgba(0,229,192,.5);box-shadow:0 16px 32px rgba(0,0,0,.35),0 0 0 1px rgba(0,229,192,.1)}
+.fc-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem}
+.feat-card .fc-icon{width:34px;height:34px;flex-shrink:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.feat-card h3{font-size:1rem;color:var(--accent);margin-bottom:0;flex:1;min-width:0}
+.feat-card p{font-size:.85rem;margin:0}
+.feat-card.wide{grid-column:1/-1}
+.feat-subhead{grid-column:1/-1;font-family:'Syne',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white);margin:.5rem 0 -.25rem;display:flex;align-items:center;gap:.5rem}
+.eci-teaser{
+  margin-top:.5rem;display:flex;flex-direction:column;align-items:flex-start;gap:1rem;
+  background:linear-gradient(120deg,rgba(0,229,192,.08),rgba(65,184,213,.05));border:1px dashed rgba(0,229,192,.35);
+  border-radius:14px;padding:1.1rem 1.3rem;
+}
+.eci-teaser p{margin:0;font-size:1.02rem;color:var(--white)}
+.eci-teaser b{color:var(--accent)}
+.eci-teaser-iqa b{color:var(--aqua)}
+.eci-teaser-iqa .btn-eci{background:var(--aqua);animation:none;box-shadow:none}
+.eci-teaser-iet b{color:var(--lima)}
+.eci-teaser-iet .btn-eci{background:var(--lima);animation:none;box-shadow:none}
+.feat-card-wave h3{color:var(--aqua)}
+.feat-card-blush h3{color:var(--blush)}
+.funcionalidades .feat-card h3{color:var(--white)}
+.feat-card-blush .btn-eci{background:var(--blush);animation:none;box-shadow:none}
+.lp-inline-icon{width:16px;height:16px;display:inline-block;vertical-align:-2px;margin-right:.4rem;filter:drop-shadow(0 2px 3px rgba(0,0,0,.4))}
+/* Gradiente — Botão Calcular (biblioteca visual): wave → accent, pulso 14s */
+.btn-eci{
+  flex-shrink:0;font-family:'Syne',sans-serif;font-weight:800;font-size:.82rem;letter-spacing:.05em;
+  background:linear-gradient(135deg,var(--wave),var(--accent));background-size:200% 200%;
+  animation:calcPulse 14s ease-in-out infinite;
+  color:var(--deep);border:none;border-radius:5px;padding:.7rem 1.3rem;
+  cursor:pointer;transition:transform .25s,box-shadow .25s;white-space:nowrap;
+  box-shadow:0 4px 20px rgba(0,229,192,.3);
+}
+.btn-eci:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,229,192,.5)}
+@keyframes calcPulse{0%,100%{background-position:0% 0%}50%{background-position:100% 100%}}
+
+/* ---------- LAUDO E RELATÓRIO ---------- */
+.laudo{background:linear-gradient(180deg,var(--ocean) 0%,#132c47 100%)}
+.laudo h3{color:var(--white);font-weight:800}
+.laudo .feat-grid{align-items:stretch}
+.laudo .feat-card{display:flex;flex-direction:column;align-items:flex-start}
+.laudo-pdf-note{
+  margin-top:1.5rem;font-size:.82rem;color:var(--foam);opacity:.75;text-align:center;
+  max-width:640px;margin-left:auto;margin-right:auto;
+}
+
+/* ---------- ESCALA ECI INTERATIVA ---------- */
+.eci-section{background:radial-gradient(120% 100% at 50% 100%,#132c47 0%,var(--deep) 60%)}
+.eci-panel{margin-top:2rem}
+.eci-picker{display:flex;flex-direction:column;gap:1.1rem}
+.eci-field{flex:1;min-width:0}
+@media(min-width:560px){.eci-picker{flex-direction:row;align-items:flex-start}}
+.eci-field label{display:block;font-family:'Syne',sans-serif;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--foam);margin-bottom:.55rem;text-align:center}
+.eci-crit{text-transform:none;letter-spacing:0;opacity:.65;font-weight:400}
+.eci-pills{display:flex;flex-direction:column;gap:.5rem}
+.eci-pill{
+  font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:700;line-height:1.25;
+  background:rgba(255,255,255,.05);border:1.5px solid var(--pc,rgba(65,184,213,.3));
+  color:var(--pc,var(--foam));border-radius:8px;width:100%;
+  text-align:center;padding:.55rem .5rem;cursor:pointer;transition:all .2s;
+  white-space:normal;word-break:break-word;overflow-wrap:break-word;
+}
+.eci-pill:hover{background:color-mix(in srgb, var(--pc,var(--aqua)) 18%, transparent)}
+.eci-pill.active{background:var(--pc,var(--accent));border-color:var(--pc,var(--accent));color:var(--white)}
+
+/* Card do gadget ECI */
+.eci-gauge-card{
+  margin-top:1.75rem;background:linear-gradient(160deg, rgba(168,220,232,.90) 0%, rgba(232,247,251,.82) 100%);
+  backdrop-filter:blur(10px);border-radius:16px;
+  padding:1.5rem 1.25rem 1.1rem;box-shadow:0 20px 44px rgba(0,0,0,.28);
+}
+.eci-gauge-row{display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.eci-gauge-wrap{width:100%;max-width:260px;position:relative}
+.eci-gauge-svg{width:100%;height:auto;display:block;overflow:visible}
+.ig-seg{filter:brightness(.78);transition:filter .3s}
+.ig-seg.active{filter:brightness(1.08) drop-shadow(0 0 6px rgba(0,0,0,.15))}
+.eci-gauge-pointer{fill:var(--deep)}
+.eci-gauge-cap{fill:var(--deep)}
+.eci-gauge-readout{text-align:center;margin-top:.6rem;position:relative;z-index:2}
+.eci-gauge-cls{font-family:'Syne',sans-serif;font-weight:800;font-size:1.35rem;transition:color .3s;color:var(--deep)}
+.eci-gauge-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem .9rem;font-size:.68rem}
+.eci-gauge-legend span{display:flex;align-items:center;gap:.35rem;font-family:'Syne',sans-serif;font-weight:700;color:var(--deep)}
+.eci-gauge-legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
+.btn-eci-limpar{
+  display:block;margin:.9rem auto 0;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:400;
+  color:var(--foam);background:transparent;border:1px solid rgba(65,184,213,.3);border-radius:8px;
+  padding:.5rem 1rem;cursor:pointer;transition:all .2s;
+}
+.btn-eci-limpar:hover{border-color:var(--flamingo);color:var(--flamingo)}
+@media(min-width:560px){
+  .eci-gauge-row{flex-direction:row;justify-content:center;gap:2rem}
+  .eci-gauge-legend{flex-direction:column;justify-content:center}
+}
+.eci-hint{text-align:center;font-size:.85rem;color:var(--foam);opacity:.6;margin-top:1rem}
+
+/* ---------- VALIDAÇÃO ---------- */
+.validacao{background:radial-gradient(120% 100% at 50% 100%,#132c47 0%,var(--deep) 60%)}
+.val-stat{text-align:center;margin:2rem 0 1.5rem;background:linear-gradient(280deg,rgba(41,128,185,.70) 5%,rgb(13,45,78) 100%);backdrop-filter:blur(10px);border-radius:16px;padding:1.75rem 1.5rem;box-shadow:0 12px 32px rgba(0,0,0,.25)}
+.val-num{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3rem,14vw,4.5rem);color:var(--blush);line-height:1}
+.val-legend{font-size:.85rem;color:var(--foam);margin-top:.4rem}
+.val-refs{display:flex;gap:.6rem;align-items:flex-start;font-size:.78rem;color:var(--foam);opacity:.65;font-style:italic;border-top:1px solid rgba(65,184,213,.2);padding-top:1.1rem;margin-top:1rem}
+.val-refs img{width:16px;height:16px;flex-shrink:0;margin-top:2px}
+
+/* ---------- SOBRE A AUTORA ---------- */
+.autora{background:var(--foam);color:var(--deep)}
+.autora .eyebrow{color:var(--wave)}
+.autora .eyebrow::before{background:var(--wave)}
+.autora h2{color:var(--ocean)}
+.autora h2 span{color:var(--aqua)}
+.autora-bio{max-width:640px;color:#3d5568}
+.autora-bio + .autora-bio{margin-top:1rem}
+.autora-bio b{color:var(--deep)}
+.autora-contact-label{
+  font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--wave);margin-top:1.75rem;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;
+}
+.autora-contact-label::before{content:'';width:22px;height:2px;background:var(--wave);display:inline-block;flex-shrink:0}
+.autora-links{display:flex;flex-wrap:wrap;gap:.6rem}
+.autora-links a{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:.82rem;letter-spacing:.05em;
+  background:linear-gradient(135deg,var(--wave),var(--accent));background-size:200% 200%;
+  animation:calcPulse 14s ease-in-out infinite;
+  color:var(--deep);border:none;border-radius:5px;padding:.7rem 1.3rem;
+  cursor:pointer;transition:transform .25s,box-shadow .25s;white-space:nowrap;text-decoration:none;
+  box-shadow:0 4px 20px rgba(0,229,192,.3);
+}
+.autora-links a:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,229,192,.5)}
+
+/* ---------- COMO FOI FEITA ---------- */
+.processo{background:#d8ecf3;color:var(--deep)}
+.processo .eyebrow{color:var(--wave)}
+.processo .eyebrow::before{background:var(--wave)}
+.processo h2{color:var(--ocean)}
+.processo h2 span{color:var(--aqua)}
+.processo p.reveal{max-width:640px;color:#3d5568}
+.processo p.reveal + p.reveal{margin-top:1.25rem}
+.tool-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.tool-badge{
+  position:relative;font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;color:var(--wave);
+  background:linear-gradient(160deg,rgba(168,220,232,.90) 0%,rgba(232,247,251,.82) 100%);
+  border:1px solid rgba(41,128,185,.3);border-radius:8px;padding:.5rem .9rem;
+  box-shadow:0 6px 16px rgba(13,45,78,.15);cursor:default;transition:transform .2s;
+}
+.tool-badge:hover{transform:translateY(-2px)}
+.tool-badge[data-tooltip]{cursor:help}
+.tool-badge[data-tooltip]::after{
+  content:attr(data-tooltip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);
+  width:max-content;max-width:220px;background:var(--deep);color:var(--foam);font-family:'DM Sans',sans-serif;
+  font-weight:400;font-size:.72rem;line-height:1.4;text-align:center;padding:.55rem .75rem;border-radius:8px;
+  box-shadow:0 8px 20px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:5;
+}
+.tool-badge[data-tooltip]:hover::after{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ---------- CONTATO ---------- */
+.contato{background:linear-gradient(160deg,var(--deep) 0%,var(--ocean) 60%,var(--wave) 100%);text-align:center}
+.contato h2{text-align:left}
+.contato-links{margin-top:1.5rem;text-align:left}
+.contato-line{font-size:1.02rem;color:var(--foam);margin-top:.75rem}
+.contato-line a{color:var(--aqua);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(65,184,213,.4);transition:border-color .2s}
+.contato-line a:hover{border-color:var(--aqua)}
+.contato p.reveal:not(.contato-nota){margin-top:1rem}
+.contato-nota{font-size:.72rem;line-height:1.6;color:var(--foam);opacity:.55;margin-top:2rem;text-align:left;margin-left:-.75rem}
+.contato{padding-bottom:0}
+footer{padding:1.25rem 1.25rem 1.5rem;text-align:center;background:var(--deep)}
+.contato-footer{
+  margin-left:-1.25rem;margin-right:-1.25rem;padding:1.25rem 1.25rem;
+  background:linear-gradient(260deg,var(--ocean) 75%,rgba(65,184,213,.8) 100%);
+  background-size:200% 200%;animation:gradientFlow 8s ease-in-out infinite alternate;
+  position:relative;overflow:hidden;
+}
+.contato-footer::before{content:'';position:absolute;bottom:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--aqua),var(--blush),var(--accent),var(--aqua),var(--wave),var(--aqua));background-size:200% 100%;animation:rainbowShift 30s linear infinite}
+@keyframes gradientFlow{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+footer p{font-size:.85rem;color:var(--foam)}
+footer img{width:150px;opacity:.85}
+.footer-brand{display:flex;align-items:center;justify-content:center;gap:.5rem;margin:0 auto .5rem}
+.footer-version{font-size:.75rem;color:var(--foam);letter-spacing:.05em}
+
+.back-to-top{position:fixed;bottom:1.5rem;right:.5rem;width:32px;height:32px;border:none;border-radius:50%;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s 1s,transform .3s;z-index:999;filter:drop-shadow(0 3px 2px rgba(10,22,40,.35))}
+.back-to-top.visible{opacity:.5;pointer-events:auto}
+.back-to-top:hover{opacity:1;transform:translateY(-3px);filter:drop-shadow(0 3px 2px rgba(10,22,40,.35)) drop-shadow(0 0 6px rgba(0,229,192,.65));transition:opacity .2s,transform .25s}
+
+.page-watermark{
+  position:fixed;left:-8%;top:50%;transform:translateY(-50%);
+  width:55vh;height:auto;opacity:0;
+  filter:drop-shadow(0 0 40px rgba(65,184,213,.2));
+  pointer-events:none;z-index:5;transition:opacity 1s ease;
+}
+.page-watermark.visible{opacity:.15}
+
+@media(max-width:420px){
+  section{padding:3.5rem 1rem}
+  .eyebrow{left:1rem}
+  .contato-footer{margin-left:-1rem;margin-right:-1rem}
+  .contato-nota{margin-left:-.5rem}
+}
+
+/* ---------- DESKTOP: mais respiro em telas largas ---------- */
+@media(min-width:900px){
+  section{padding:2rem 2rem 6.5rem}
+  .wrap{max-width:1060px}
+  .hero-row{flex-direction:row;justify-content:center;align-items:center;gap:3rem}
+  .hero-logo{width:min(22vw,280px);margin:0}
+  .hero-tagline{font-size:clamp(1.6rem,2.8vw,2.2rem)}
+  .hero-sub{max-width:420px;font-size:1.15rem;opacity:.85;text-align:left}
+  .hero-credits{font-size:1rem}
+  .autora-bio,.processo p.reveal{max-width:none}
+  .feat-grid{grid-template-columns:1fr 1fr 1fr}
+  .feat-card.wide,.feat-subhead.wide{grid-column:1/-1}
+  .laudo .feat-grid{grid-template-columns:1fr 1fr 1fr}
+  h2{font-size:1.9rem}
+  p{font-size:1rem}
+  .eyebrow{font-size:.8rem}
+  .nowrap-desktop{white-space:nowrap}
+  .eyebrow{left:2rem}
+  .wrap{padding-top:1rem}
+  .autora,.processo{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start;padding-top:2rem;padding-bottom:.9rem}
+  .conceitos,.laudo,.eci-section,.validacao{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start;padding-top:2rem;padding-bottom:5.9rem}
+  .sobre{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start;padding-top:2rem;padding-bottom:.9rem}
+  .contato{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start;padding-top:2rem;padding-bottom:0}
+  .contato-footer{padding-top:1rem;padding-bottom:1rem;margin-left:-2rem;margin-right:-2rem;padding-left:2rem;padding-right:2rem}
+  .contato-nota{margin-top:auto;margin-left:-1.25rem}
+  .section-nav-inline{margin-top:.5rem}
+}
+@media(min-width:1200px){
+  .wrap{max-width:1080px}
+}
+
+/* ---------- MOBILE: enquadramento das setas é feature de desktop ---------- */
+@media(max-width:899px){
+  .section-nav{display:none}
+  .hero-scroll{pointer-events:none;cursor:default}
+}
+
+/* ---------- CONCEITOS (IQA / IET) ---------- */
+.conceitos{background:linear-gradient(180deg,#0c2036 0%,var(--ocean) 100%)}
+
+/* ---------- POPUPS (IQA, IET, Corpo D'água, ECI) ---------- */
+.lp-overlay{position:fixed;inset:0;background:linear-gradient(90deg,rgba(41,128,185,0),rgba(65,184,213,0),rgba(0,229,192,.2));backdrop-filter:blur(12px);z-index:10000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s;padding:1rem}
+.lp-overlay.open{opacity:1;pointer-events:all}
+.lp-modal{background:rgba(13,45,78,.96);border:1px solid rgba(65,184,213,.18);border-radius:14px;padding:0;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 40px 100px rgba(0,0,0,.7);transform:translateY(24px);transition:transform .35s;position:relative}
+.lp-overlay.open .lp-modal{transform:translateY(0)}
+.lp-header{padding:1.6rem 3rem 1rem 1.6rem;border-bottom:1px solid rgba(65,184,213,.1);position:sticky;top:0;background:var(--ocean);border-radius:14px 14px 0 0}
+.lp-header::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:14px 14px 0 0;background:linear-gradient(90deg,var(--aqua),var(--blush),var(--accent),var(--aqua),var(--wave),var(--aqua));background-size:200% 100%;animation:rainbowShift 30s linear infinite}
+.lp-close{position:absolute;top:1.1rem;right:1.2rem;background:none;border:none;color:var(--foam);font-size:1.2rem;cursor:pointer;line-height:1}
+.lp-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:var(--white)}
+.lp-title span{color:var(--accent);font-weight:600;font-size:.85rem;display:block;margin-top:.15rem}
+.lp-sub{font-size:.72rem;color:var(--foam);letter-spacing:.08em;text-transform:uppercase;margin-top:.4rem;opacity:.8}
+.lp-body{padding:1.5rem 1.6rem 1.8rem;display:flex;flex-direction:column;gap:1.25rem}
+.lp-body p{font-size:.88rem;line-height:1.7;color:var(--foam);margin:0}
+.lp-group-label{font-family:'Syne',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem}
+.lp-cls-list{display:flex;flex-direction:column;gap:.4rem}
+.lp-cls-row{display:flex;align-items:center;gap:.6rem;font-size:.82rem;font-weight:600;border-radius:8px;padding:.55rem .8rem}
+.lp-cls-name{flex:1}
+.lp-cls-range{font-size:.76rem;opacity:.85}
+.lp-feat-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.85rem}
+.lp-feat-list li{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:var(--aqua);display:flex;align-items:center;gap:.6rem;letter-spacing:.01em}
+.lp-feat-list li.feat-diferencial{color:var(--wave);font-weight:800}
+.lp-feat-list li img{width:15px;height:15px;flex-shrink:0}
+.curve-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:.8rem}
+@media(min-width:480px){.curve-grid{grid-template-columns:1fr 1fr}}
+.curve-box{background:rgba(255,255,255,.04);border:1px solid rgba(65,184,213,.15);border-radius:10px;padding:.8rem}
+.curve-label{font-family:'Syne',sans-serif;font-weight:700;font-size:.72rem;margin-bottom:.5rem}
+.lp-note{font-size:.8rem;line-height:1.7;color:var(--foam);background:rgba(212,116,138,.08);border:1px solid rgba(212,116,138,.22);border-radius:8px;padding:.9rem 1rem}
+.lp-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
+.uf-badge{font-family:'Syne',sans-serif;font-weight:700;font-size:.72rem;padding:.2rem .5rem;border-radius:6px;border:1px solid}
+.uf-cetesb{background:rgba(41,128,185,.2);border-color:rgba(41,128,185,.4);color:var(--foam)}
+.uf-igam{background:rgba(0,229,192,.12);border-color:rgba(0,229,192,.3);color:var(--accent)}
+.uf-outros{background:rgba(65,184,213,.1);border-color:rgba(65,184,213,.2);color:rgba(168,220,232,.7);font-style:italic;font-size:.68rem}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <img class="hero-bg-s" src="https://saiqa.online/assets/saiqa_s.svg" alt="">
+  <div class="hero-tagline">
+    <span class="l1">Da análise à</span>
+    <span class="l2">Interpretação Ambiental</span>
+  </div>
+  <div class="hero-spacer"></div>
+  <div class="hero-row">
+    <img class="hero-logo" src="https://saiqa.online/assets/saiqa_logotipo.svg" alt="SAIQA">
+    <a class="hero-credits" href="#autora">Idealizada e Desenvolvida por Andrezza Rosa</a>
+  </div>
+  <div class="hero-spacer"></div>
+  <p class="hero-sub">Conheça por trás da ferramenta.</p>
+  <a class="hero-scroll" href="#sobre" aria-label="Rolar para a próxima seção"><div class="arrow"></div></a>
+  <div class="hero-rainbow"></div>
+</section>
+
+<img class="page-watermark" id="pageWatermark" src="https://saiqa.online/assets/saiqa_s.svg" alt="">
+
+<!-- SOBRE (sigla + resumo) -->
+<section class="sobre" id="sobre">
+  <div class="eyebrow reveal">O que é</div>
+  <div class="wrap">
+    <h2 class="reveal reveal-delay-1">O que <span>significa SAIQA</span></h2>
+    <div class="sigla-row reveal reveal-delay-1">
+      <div class="sigla-item"><svg class="sigla-l" viewBox="0 0 8670.9 6019.4"><path fill="#41B8D5" fill-rule="nonzero" d="M0 3765.5l2413 0c41.3,123.6 162,228.3 362.3,313.7 200.4,85.4 470,150.2 808.9,194.4 338.7,44.3 732.1,66.4 1179.9,66.4 441.9,0 791.1,-13.3 1047.5,-39.9 256.2,-26.5 437.4,-73.5 543.5,-141.3 106.1,-67.8 159.1,-160.7 159.1,-278.4 0,-112 -85.5,-198.9 -256.3,-260.8 -170.9,-61.8 -474.4,-104.6 -910.4,-128.2 -436.1,-23.6 -1048.9,-35.3 -1838.5,-35.3 -589.2,0 -1097.5,-28.1 -1524.7,-84 -427.3,-56 -777.8,-144.4 -1051.9,-265.1 -273.9,-120.9 -475.8,-274.1 -605.4,-459.7 -129.6,-185.6 -194.4,-408.1 -194.4,-667.3 0,-447.9 151.7,-817.6 455.2,-1109.3 303.4,-291.7 763.1,-509.7 1378.8,-654.1 615.7,-144.3 1386.2,-216.6 2311.4,-216.6 1355.3,0 2390.9,196 3106.8,587.9 716,391.8 1073.9,956 1073.9,1692.6l-2289.2 0c-29.5,-194.5 -212.2,-343.3 -548,-446.4 -335.9,-103.1 -813.2,-154.7 -1431.9,-154.7 -612.9,0 -1068.1,35.4 -1365.6,106.1 -297.6,70.7 -446.4,191.5 -446.4,362.4 0,88.4 41.2,159.1 123.8,212.2 82.5,52.9 225.4,95.7 428.7,128.1 203.3,32.4 490.5,54.6 861.8,66.3 371.2,11.7 842.6,17.6 1414.1,17.6 630.6,0 1166.8,31 1608.7,92.9 442,61.9 800,154.6 1073.9,278.5 274,123.6 473,281.2 596.7,472.8 123.8,191.5 185.6,416.9 185.6,676.2 0,447.8 -141.4,813.2 -424.3,1096 -282.9,282.8 -730.6,492 -1343.5,627.6 -612.8,135.5 -1414.1,203.3 -2404.1,203.3 -559.8,0 -1073.9,-32.5 -1542.4,-97.3 -468.4,-64.8 -885.4,-160.5 -1250.8,-287.2 -365.2,-126.8 -674.6,-282.9 -928,-468.4 -253.4,-185.7 -446.4,-394.9 -579,-627.6 -132.6,-232.8 -198.8,-490.6 -198.8,-773.4z"/></svg>istema de</div>
+      <div class="sigla-item"><svg class="sigla-l" viewBox="9592.7 362.4 9899.5 5657"><polygon fill="#41B8D5" fill-rule="nonzero" points="16062.8,362.4 19492.2,6019.4 16999.7,6019.4 14074,583.4 14975.6,583.4 12049.9,6019.4 9592.7,6019.4 12986.9,362.4 "/><path fill="#D4748A" d="M14542.5 3781.2c402,0 728,326.1 728,728.1 0,402 -326,727.9 -728,727.9 -402,0 -727.9,-325.9 -727.9,-727.9 0,-402 325.9,-728.1 727.9,-728.1z"/></svg>valiação</div>
+      <div class="sigla-item"><svg class="sigla-l" viewBox="20415.2 362.4 2209.8 5657"><polygon fill="#41B8D5" fill-rule="nonzero" points="20415.2,362.4 22625,362.4 22625,6019.4 20415.2,6019.4 "/></svg>ntegrada da</div>
+      <div class="sigla-item"><svg class="sigla-l" viewBox="23920.5 177.6 10695 7601.6"><path fill="#00E5C0" fill-rule="nonzero" d="M28207.3 5631.3l2121.4 0 0 2147.9 -2121.4 0 0 -2147.9zm1060.7 556.8c-1284.6,0 -2318.8,-113.5 -3102.5,-340.2 -783.6,-226.9 -1353.7,-562.8 -1710.2,-1007.7 -356.5,-444.9 -534.8,-997.3 -534.8,-1657.4 0,-659.9 178.3,-1212.3 534.8,-1657.2 356.5,-444.9 926.6,-780.8 1710.2,-1007.7 783.7,-226.9 1817.9,-340.3 3102.5,-340.3 1284.6,0 2318.7,113.4 3102.4,340.3 783.7,226.9 1353.9,562.8 1710.4,1007.7 356.5,444.9 534.7,997.3 534.7,1657.2 0,660.1 -178.2,1212.5 -534.7,1657.4 -356.5,444.9 -926.7,780.8 -1710.4,1007.7 -783.7,226.7 -1817.8,340.2 -3102.4,340.2zm0 -1679.4c606.9,0 1131.3,-36.8 1573.3,-110.5 442,-73.6 783.7,-206.2 1025.3,-397.7 241.6,-191.5 362.4,-464 362.4,-817.7 0,-353.5 -120.8,-626 -362.4,-817.6 -241.6,-191.4 -583.3,-324 -1025.3,-397.7 -442,-73.6 -966.4,-110.4 -1573.3,-110.4 -606.9,0 -1138.7,36.8 -1595.5,110.4 -456.6,73.7 -813.1,206.3 -1069.5,397.7 -256.2,191.6 -384.4,464.1 -384.4,817.6 0,353.7 128.2,626.2 384.4,817.7 256.4,191.5 612.9,324.1 1069.5,397.7 456.8,73.7 988.6,110.5 1595.5,110.5z"/></svg>ualidade</div>
+      <div class="sigla-item"><svg class="sigla-l" viewBox="34773.4 362.4 9899.5 5657"><polygon fill="#00E5C0" fill-rule="nonzero" points="41243.4,362.4 44672.9,6019.4 42180.4,6019.4 39254.7,583.4 40156.3,583.4 37230.6,6019.4 34773.4,6019.4 38167.5,362.4 "/><path fill="#D4748A" d="M39694 3771.7c402,0 727.9,326 727.9,728 0,402 -325.9,727.9 -727.9,727.9 -402,0 -728.1,-325.9 -728.1,-727.9 0,-402 326.1,-728 728.1,-728z"/></svg>mbiental</div>
+    </div>
+    <p class="reveal reveal-delay-2">Uma única plataforma que reúne cálculo, interpretação e comparação, gratuito e sem depender de planilhas ou softwares.</p>
+  </div>
+  <div class="section-nav">
+    <a class="section-back" href="#hero" aria-label="Rolar para a seção anterior"><div class="arrow"></div></a>
+    <a class="section-scroll" href="#origem" aria-label="Rolar para a próxima seção"><div class="arrow"></div></a>
+  </div>
+</section>
+
+<!-- ORIGEM -->
+<section class="origem" id="origem">
+  <div class="eyebrow reveal">A história</div>
+  <div class="wrap">
+    <h2 class="reveal reveal-delay-1">Como <span>surgiu a SAIQA</span></h2>
+    <div class="timeline">
+      <div class="tl-item reveal reveal-delay-1">
+        <b>Uma proposta simples</b>
+        <p><span class="nowrap-desktop">Tudo começou com a ideia de desenvolver uma calculadora para o Índice de Qualidade da Água (IQA) e o Índice do Estado Trófico (IET).</span></p>
+      </div>
+      <div class="tl-item reveal reveal-delay-2">
+        <b>Uma lacuna evidente</b>
+        <p>Durante os estudos, ficou claro que calcular não é o mesmo que compreender. Faltava interpretação, não apenas número.</p>
+      </div>
+      <div class="tl-item reveal reveal-delay-2">
+        <b>O núcleo da SAIQA</b>
+        <p>Surgiu então a Avaliação Integrada IQA+IET, que não fazia parte do plano inicial, mas nasceu da necessidade de interpretar os resultados de forma mais coerente com a realidade ambiental.</p>
+      </div>
+      <div class="tl-item reveal reveal-delay-3">
+        <b>O resto do caminho</b>
+        <p>Do mesmo processo nasceram a análise de múltiplos pontos de coleta, o módulo educacional e os recursos de acessibilidade.</p>
+      </div>
+      <div class="tl-item reveal reveal-delay-3">
+        <b>Reconhecimento oficial</b>
+        <p>Em jun/2026, a SAIQA foi registrada junto ao INPI (Instituto Nacional da Propriedade Industrial), processo nº BR512026004266-6, validando formalmente a autoria e a originalidade do sistema.</p>
+      </div>
+    </div>
+  </div>
+  <div class="section-nav">
+    <a class="section-back" href="#sobre" aria-label="Rolar para a seção anterior"><div class="arrow"></div></a>
+    <a class="section-scroll" href="#conceitos" aria-label="Rolar para a próxima seção"><div class="arrow"></div></a>
+  </div>
+</section>
+
+<!-- CONCEITOS: IQA / IET -->
+<section class="conceitos" id="conceitos">
+  <div class="eyebrow reveal">Os índices</div>
+  <div class="wrap">
+    <h2 class="reveal reveal-delay-1">O que são <span>IQA e IET</span></h2>
+    <p class="reveal reveal-delay-1">Dois indicadores complementares que a SAIQA calcula e interpreta automaticamente.</p>
+
+    <div class="feat-grid">
+      <div class="feat-card wide eci-teaser eci-teaser-iqa reveal reveal-delay-2">
+        <p><img class="lp-inline-icon" src="https://saiqa.online/assets/saiqa_grafico.svg" alt=""><b>Índice de Qualidade da Água (IQA)</b><br>Combina nove parâmetros físico-químicos e microbiológicos em um valor de 0 a 100, indicando o quanto a água é própria para abastecimento.</p>
+        <button class="btn-eci" data-modal="iqa-overlay">Ver classificação ↓</button>
+      </div>
+      <div class="feat-card wide eci-teaser eci-teaser-iet reveal reveal-delay-2">
+        <p><img class="lp-inline-icon" src="https://saiqa.online/assets/saiqa_grafico.svg" alt=""><b>Índice do Estado Trófico (IET)</b><br>Mede a concentração de nutrientes na água (fósforo e clorofila-a), indicando o grau de eutrofização do corpo hídrico.</p>
+        <button class="btn-eci" data-modal="iet-overlay">Ver classificação ↓</button>
+      </div>
+    </div>
+  </div>
+  <div class="section-nav">
+    <a class="section-back" href="#origem" aria-label="Rolar para a seção anterior"><div class="arrow"></div></a>
+    <a class="section-scroll" href="#funcionalidades" aria-label="Rolar para a próxima seção"><div class="arrow"></div></a>
+  </div>
+</section>
+
+<!-- FUNCIONALIDADES -->
+<section class="funcionalidades" id="funcionalidades">
+  <div class="eyebrow reveal">Funcionalidades</div>
+  <div class="wrap">
+    <h2 class="reveal reveal-delay-1">Como <span>ela analisa</span></h2>
+    <p class="reveal reveal-delay-1">Calcula e interpreta automaticamente o IQA e o IET, aplicando os critérios regionais de classificação vigentes no Brasil.</p>
+
+    <div class="feat-grid">
+      <div class="feat-card feat-card-wave reveal reveal-delay-2">
+        <div class="fc-head"><img class="fc-icon" src="https://saiqa.online/assets/saiqa_lupa.svg" alt=""><h3>Análise Individual</h3></div>
+        <p>Avaliação detalhada de uma única amostra, com laudo interpretativo completo.</p>
+        <button class="btn-eci" data-modal="individual-overlay" style="margin-top:.85rem">Saiba mais</button>
+      </div>
+      <div class="feat-card feat-card-wave reveal reveal-delay-2">
+        <div class="fc-head"><img class="fc-icon" src="https://saiqa.online/assets/saiqa_lupa.svg" alt=""><h3><span class="nowrap-desktop">Análise Multiamostra</span></h3></div>
+        <p>Compare simultaneamente múltiplos pontos de coleta em um relatório único.</p>
+        <button class="btn-eci" data-modal="multi-overlay" style="margin-top:.85rem">Saiba mais</button>
+      </div>
+
+      <div class="feat-card reveal reveal-delay-3">
+        <div class="fc-head"><img class="fc-icon" src="https://saiqa.online/assets/saiqa_s.svg" alt=""><h3>Critérios Regionais</h3></div>
+        <p>Classificação automática conforme o critério do estado informado (CETESB/ANA ou IGAM).</p>
+        <button class="btn-eci" data-modal="criterios-overlay" style="margin-top:.85rem">Saiba mais</button>
+      </div>
+      <div class="feat-card reveal reveal-delay-3">
+        <div class="fc-head"><img class="fc-icon" src="https://saiqa.online/assets/saiqa_s.svg" alt=""><h3>Seleção do Corpo D'água</h3></div>
+        <p>Diferencia ambientes lênticos e lóticos, ajustando as equações do IET.</p>
+        <button class="btn-eci" data-modal="corpo-overlay" style="margin-top:.85rem">Saiba mais</button>
+      </div>
+      <div class="feat-card reveal reveal-delay-3">
+        <div class="fc-head"><img class="fc-icon" src="https://saiqa.online/assets/saiqa_s.svg" alt=""><h3>Acessibilidade</h3></div>
+        <p>Leitura em voz alta, ajuste de fonte e recursos pensados para ampliar a compreensão do conteúdo.</p>
+      </div>
+    </div>
+  </div>
+  <div class="section-nav">
+    <a class="section-back" href="#conceitos" aria-label="Rolar para a seção anterior"><div class="arrow"></div></a>
+    <a class="section-scroll" href="#laudo" aria-label="Rolar para a próxima seção"><div class="arrow"></div></a>
+  </div>
+</section>
+
+<!-- LAUDO E RELATÓRIO -->
+<section class="laudo" id="laudo">
+  <div class="eyebrow reveal">Funcionalidades</div>
+  <div class="wrap">
+    <h2 class="reveal reveal-delay-1">O resultado <span>da análise</span></h2>
+    <p class="reveal reveal-delay-1">Cada análise gera um documento pronto para uso, com resultado, classificação e interpretação, exportável em PDF.</p>
+
+    <div class="feat-grid">
+      <div class="feat-card feat-card-wave reveal reveal-delay-2">
+        <div class="fc-head"><img class="fc-icon" src="https://saiqa.online/assets/saiqa_lupa.svg" alt=""><h3>Avaliação Integrada IQA+IET</h3></div>
+        <p>A metodologia original da SAIQA combina os dois índices em uma classificação ambiental única.</p>
+        <button class="btn-eci" data-modal="integrada-overlay" style="margin-top:.85rem">Saiba mais</button>
+      </div>
+      <div class="feat-card feat-card-wave reveal reveal-delay-2">
+        <div class="fc-head"><img class="fc-icon" src="https://saiqa.online/assets/saiqa_lupa.svg" alt=""><h3>Laudo Interpretativo</h3></div>
+        <p>Organiza os resultados em blocos por índice — IQA, IET e, quando os dois são calculados, a Avaliação Integrada — cada um com interpretação automática.</p>
+        <button class="btn-eci" data-modal="laudo-overlay" style="margin-top:.85rem">Saiba mais</button>
+      </div>
+      <div class="feat-card feat-card-wave reveal reveal-delay-2">
+        <div class="fc-head"><img class="fc-icon" src="https://saiqa.online/assets/saiqa_lupa.svg" alt=""><h3>Relatório Comparativo</h3></div>
+        <p>Reúne todos os pontos coletados em tabela e gráficos comparativos, com uma leitura consolidada do conjunto.</p>
+        <button class="btn-eci" data-modal="relatorio-overlay" style="margin-top:.85rem">Saiba mais</button>
+      </div>
+      <div class="feat-card feat-card-wave wide reveal reveal-delay-3">
+        <div class="fc-head"><img class="fc-icon" src="https://saiqa.online/assets/saiqa_lupa.svg" alt=""><h3>Exportação em PDF</h3></div>
+        <p>O documento sai pronto para impressão, com cabeçalho institucional, dados da análise e um QR code que leva direto à SAIQA.</p>
+      </div>
+    </div>
+  </div>
+  <div class="section-nav">
+    <a class="section-back" href="#funcionalidades" aria-label="Rolar para a seção anterior"><div class="arrow"></div></a>
+    <a class="section-scroll" href="#eci" aria-label="Rolar para a próxima seção"><div class="arrow"></div></a>
+  </div>
+</section>
+
+<!-- ESCALA ECI INTERATIVA -->
+<section class="eci-section" id="eci">
+  <div class="eyebrow reveal">Experimente</div>
+  <div class="wrap">
+    <h2 class="reveal reveal-delay-1">Escala de <span>Classificação Integrada (ECI)</span></h2>
+    <p class="reveal reveal-delay-1">Escolha uma classe de IQA e uma classe de IET e veja como a SAIQA combina os dois índices em uma única leitura ambiental, a mesma lógica usada nos laudos reais da saiqa.online.</p>
+
+    <div class="eci-panel reveal reveal-delay-2">
+      <div class="eci-picker">
+        <div class="eci-field">
+          <label style="color:var(--aqua)">Classificação do IQA <span class="eci-crit">(critério CETESB/ANA)</span></label>
+          <div class="eci-pills" id="eci-iqa-pills"></div>
+        </div>
+        <div class="eci-field">
+          <label style="color:var(--lima)">Classificação do IET</label>
+          <div class="eci-pills" id="eci-iet-pills"></div>
+        </div>
+      </div>
+
+      <button type="button" class="btn-eci" id="eci-ver-resultado" style="display:none;margin:1rem auto 0">Ver resultado ↗</button>
+      <button type="button" class="btn-eci-limpar" id="eci-limpar">&#x21BA; Limpar seleção</button>
+    </div>
+  </div>
+  <div class="section-nav">
+    <a class="section-back" href="#laudo" aria-label="Rolar para a seção anterior"><div class="arrow"></div></a>
+    <a class="section-scroll" href="#validacao" aria-label="Rolar para a próxima seção"><div class="arrow"></div></a>
+  </div>
+</section>
+
+<!-- VALIDAÇÃO -->
+<section class="validacao" id="validacao">
+  <div class="eyebrow reveal">Confiabilidade</div>
+  <div class="wrap">
+    <h2 class="reveal reveal-delay-1" style="color:var(--white)">Validação <span>da SAIQA</span></h2>
+    <p class="reveal reveal-delay-1">Os cálculos da SAIQA foram validados por comparação direta com metodologias e referências técnicas consolidadas na literatura especializada.</p>
+    <div class="val-stat reveal reveal-delay-2">
+      <div class="val-num" id="val-counter">0%</div>
+      <div class="val-legend">de concordância qualitativa nos cenários avaliados</div>
+    </div>
+    <p class="reveal reveal-delay-2">A validação contemplou análises individuais e multiamostra, critérios CETESB/ANA e IGAM, além de ambientes lóticos e lênticos para o cálculo do IET.</p>
+    <div class="val-refs reveal reveal-delay-3">
+      <span>Referências: CETESB (2008); IGAM (2012); LAMPARELLI (2004).</span>
+    </div>
+  </div>
+  <div class="section-nav">
+    <a class="section-back" href="#eci" aria-label="Rolar para a seção anterior"><div class="arrow"></div></a>
+    <a class="section-scroll" href="#autora" aria-label="Rolar para a próxima seção"><div class="arrow"></div></a>
+  </div>
+</section>
+
+<!-- SOBRE A AUTORA -->
+<section class="autora" id="autora">
+  <div class="eyebrow reveal">Bastidores</div>
+  <div class="wrap">
+    <h2 class="reveal reveal-delay-1">Por trás <span>da SAIQA</span></h2>
+    <p class="autora-bio reveal reveal-delay-1">Sou Andrezza Rosa, fascinada pela tecnologia aplicada ao campo e apaixonada pela área ambiental. Embora minha primeira formação tenha sido em Tecnologia em Marketing, foi na Engenharia Agrícola e Ambiental que encontrei minha verdadeira vocação.</p>
+    <p class="autora-bio reveal reveal-delay-2">A SAIQA foi desenvolvida durante a elaboração do meu Trabalho de Conclusão de Curso em Engenharia Agrícola e Ambiental, na Universidade Federal Rural do Semiárido (UFERSA), no semestre 2026.1. O projeto surgiu da necessidade de simplificar os cálculos dos índices IQA e IET e de oferecer interpretações ambientais mais completas e acessíveis. Desde sua concepção, foi pensado para atender diferentes públicos, desde estudantes em processo de aprendizagem até pesquisadores, técnicos e gestores que necessitam de informações confiáveis para apoiar análises e tomadas de decisão.</p>
+    <p class="autora-bio reveal reveal-delay-3">A SAIQA segue em constante evolução. Continuo me aperfeiçoando para desenvolver uma versão ainda mais completa da ferramenta, incorporando novos recursos e ampliando suas possibilidades de aplicação na avaliação da qualidade ambiental.</p>
+    <div class="autora-contact-label reveal reveal-delay-3">Links</div>
+    <div class="autora-links reveal reveal-delay-3">
+      <a href="mailto:andrezzarosa@saiqa.online">Email</a>
+      <a href="https://www.linkedin.com/in/andrezza-af-rosa" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="http://lattes.cnpq.br/8331925814310721" target="_blank" rel="noopener">Lattes</a>
+    </div>
+  </div>
+  <div class="section-nav">
+    <a class="section-back" href="#validacao" aria-label="Rolar para a seção anterior"><div class="arrow"></div></a>
+    <a class="section-scroll" href="#processo" aria-label="Rolar para a próxima seção"><div class="arrow"></div></a>
+  </div>
+</section>
+
+<!-- COMO FOI FEITA -->
+<section class="processo" id="processo">
+  <div class="eyebrow reveal">O processo</div>
+  <div class="wrap">
+    <h2 class="reveal reveal-delay-1">Como <span>foi feita</span></h2>
+    <p class="reveal reveal-delay-1">O front-end foi desenvolvido em HTML, CSS e JavaScript, sem o uso de frameworks, priorizando desempenho, compatibilidade e leveza.</p>
+    <p class="reveal reveal-delay-2">A identidade visual da SAIQA, incluindo logotipo, paleta de cores, tipografia e iconografia, foi desenvolvida por Andrezza Rosa. A interface foi projetada para ser limpa, intuitiva e acessível, com recursos de acessibilidade integrados e layout responsivo para desktop e dispositivos móveis.</p>
+    <p class="reveal reveal-delay-3">O acesso à plataforma é monitorado por meio do Google Analytics.</p>
+    <div class="tool-badges reveal reveal-delay-3">
+      <span class="tool-badge">HTML</span>
+      <span class="tool-badge">CSS</span>
+      <span class="tool-badge">JavaScript</span>
+      <span class="tool-badge" data-tooltip="CorelDRAW Graphics Suite, usado na identidade visual e no logotipo">CorelDRAW</span>
+      <span class="tool-badge" data-tooltip="Usado para monitorar acessos e comportamento na SAIQA">Google Analytics</span>
+    </div>
+  </div>
+  <div class="section-nav">
+    <a class="section-back" href="#autora" aria-label="Rolar para a seção anterior"><div class="arrow"></div></a>
+    <a class="section-scroll" href="#contato" aria-label="Rolar para a próxima seção"><div class="arrow"></div></a>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <div class="eyebrow reveal">Acesso</div>
+  <div class="wrap">
+    <h2 class="reveal reveal-delay-1">Acesse a <span>SAIQA</span></h2>
+    <div class="contato-links reveal reveal-delay-2">
+      <p class="contato-line">Acesse pelo site <a href="https://saiqa.online" target="_blank" rel="noopener">saiqa.online</a></p>
+      <p class="contato-line">Ou mande um e-mail <a href="mailto:contato@saiqa.online">contato@saiqa.online</a></p>
+    </div>
+  </div>
+  <p class="contato-nota reveal reveal-delay-3">Este material foi produzido para fins de divulgação e esclarecimento sobre a SAIQA.<br>Os textos são de autoria de Andrezza Rosa e não podem ser copiados ou reproduzidos,<br>total ou parcialmente, sem a devida referência à autora.<br><em>As referências técnicas utilizadas estão disponíveis no item Referências, dentro do menu do site.</em></p>
+  <div class="section-nav section-nav-inline">
+    <a class="section-back" href="#processo" aria-label="Rolar para a seção anterior"><div class="arrow"></div></a>
+  </div>
+  <footer class="contato-footer">
+    <div class="footer-brand">
+      <img src="https://saiqa.online/assets/saiqa_nome.svg" alt="SAIQA">
+      <span class="footer-version">&copy; 2026</span>
+    </div>
+    <p>Desenvolvido por <span style="color:var(--blush)">Andrezza Rosa</span></p>
+  </footer>
+</section>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Voltar ao topo"><img src="https://saiqa.online/assets/saiqa_seta.svg" alt="" width="30" height="30"></button>
+
+<!-- POPUP: IQA -->
+<div class="lp-overlay" id="iqa-overlay">
+  <div class="lp-modal">
+    <div class="lp-header">
+      <button class="lp-close" data-close>✕</button>
+      <div class="lp-title">IQA<span>Índice de Qualidade da Água</span></div>
+      <div class="lp-sub">Índice geral de qualidade da água</div>
+    </div>
+    <div class="lp-body">
+      <p>A faixa de classificação do IQA varia conforme o estado. O mesmo valor numérico pode receber rótulos diferentes dependendo do critério adotado.</p>
+      <div>
+        <div class="lp-group-label" style="color:var(--aqua)">CETESB / ANA</div>
+        <div class="lp-badges"><span class="uf-badge uf-cetesb">SP</span><span class="uf-badge uf-cetesb">BA</span><span class="uf-badge uf-cetesb">CE</span><span class="uf-badge uf-cetesb">ES</span><span class="uf-badge uf-cetesb">GO</span><span class="uf-badge uf-cetesb">MS</span><span class="uf-badge uf-cetesb">PB</span><span class="uf-badge uf-cetesb">PE</span><span class="uf-badge uf-outros">+ demais</span></div>
+        <div class="lp-cls-list" style="margin-top:.6rem">
+          <div class="lp-cls-row" style="background:#3D5FA0;color:#fff"><span class="lp-cls-name">Ótima</span><span class="lp-cls-range">80 – 100</span></div>
+          <div class="lp-cls-row" style="background:#6CBD45;color:#0a1628"><span class="lp-cls-name">Boa</span><span class="lp-cls-range">52 – 79</span></div>
+          <div class="lp-cls-row" style="background:#D4A017;color:#0a1628"><span class="lp-cls-name">Razoável</span><span class="lp-cls-range">37 – 51</span></div>
+          <div class="lp-cls-row" style="background:#B03020;color:#fff"><span class="lp-cls-name">Ruim</span><span class="lp-cls-range">20 – 36</span></div>
+          <div class="lp-cls-row" style="background:#7B5B9A;color:#fff"><span class="lp-cls-name">Péssima</span><span class="lp-cls-range">0 – 19</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="lp-group-label" style="color:var(--accent)">IGAM</div>
+        <div class="lp-badges"><span class="uf-badge uf-igam">AL</span><span class="uf-badge uf-igam">MG</span><span class="uf-badge uf-igam">MT</span><span class="uf-badge uf-igam">PR</span><span class="uf-badge uf-igam">RJ</span><span class="uf-badge uf-igam">RN</span><span class="uf-badge uf-igam">RS</span></div>
+        <div class="lp-cls-list" style="margin-top:.6rem">
+          <div class="lp-cls-row" style="background:#3D5FA0;color:#fff"><span class="lp-cls-name">Excelente</span><span class="lp-cls-range">91 – 100</span></div>
+          <div class="lp-cls-row" style="background:#6CBD45;color:#0a1628"><span class="lp-cls-name">Bom</span><span class="lp-cls-range">71 – 90</span></div>
+          <div class="lp-cls-row" style="background:#D4A017;color:#0a1628"><span class="lp-cls-name">Regular</span><span class="lp-cls-range">51 – 70</span></div>
+          <div class="lp-cls-row" style="background:#F59523;color:#0a1628"><span class="lp-cls-name">Ruim</span><span class="lp-cls-range">26 – 50</span></div>
+          <div class="lp-cls-row" style="background:#7B5B9A;color:#fff"><span class="lp-cls-name">Muito Ruim</span><span class="lp-cls-range">0 – 25</span></div>
+        </div>
+      </div>
+      <div class="lp-note">Um IQA igual a <strong>75</strong> é <strong style="color:#6CBD45">Boa</strong> no critério CETESB/ANA e <strong style="color:#D4A017">Regular</strong> no critério IGAM — o valor não muda, só o enquadramento.</div>
+      <div>
+        <div class="lp-group-label" style="color:var(--aqua)">Curvas de Qualidade NSF</div>
+        <p style="margin-top:.4rem">Cada parâmetro segue uma curva própria: quanto mais próximo do ideal, maior o subíndice qi (0-100).</p>
+        <div class="curve-grid">
+          <div class="curve-box">
+            <div class="curve-label" style="color:#41b8d5">Oxigênio Dissolvido (% sat.)</div>
+            <canvas id="curve-od" height="140"></canvas>
+          </div>
+          <div class="curve-box">
+            <div class="curve-label" style="color:#f59523">Fósforo Total (mg/L)</div>
+            <canvas id="curve-fos" height="140"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP: IET -->
+<div class="lp-overlay" id="iet-overlay">
+  <div class="lp-modal">
+    <div class="lp-header">
+      <button class="lp-close" data-close>✕</button>
+      <div class="lp-title">IET<span>Índice do Estado Trófico</span></div>
+      <div class="lp-sub">Nível de nutrientes na água</div>
+    </div>
+    <div class="lp-body">
+      <p>O IET mede a concentração de fósforo total e clorofila-a, indicando o grau de eutrofização, o excesso de nutrientes que favorece a proliferação de algas. O cálculo considera se o corpo d'água é lêntico ou lótico.</p>
+      <div class="lp-cls-list">
+        <div class="lp-cls-row" style="background:#3D5FA0;color:#fff"><span class="lp-cls-name">Ultraoligotrófico</span><span class="lp-cls-range">≤ 47</span></div>
+        <div class="lp-cls-row" style="background:#6CBD45;color:#0a1628"><span class="lp-cls-name">Oligotrófico</span><span class="lp-cls-range">48 – 52</span></div>
+        <div class="lp-cls-row" style="background:#D4A017;color:#0a1628"><span class="lp-cls-name">Mesotrófico</span><span class="lp-cls-range">53 – 59</span></div>
+        <div class="lp-cls-row" style="background:#F59523;color:#0a1628"><span class="lp-cls-name">Eutrófico</span><span class="lp-cls-range">60 – 63</span></div>
+        <div class="lp-cls-row" style="background:#B03020;color:#fff"><span class="lp-cls-name">Supereutrófico</span><span class="lp-cls-range">64 – 67</span></div>
+        <div class="lp-cls-row" style="background:#7B5B9A;color:#fff"><span class="lp-cls-name">Hipereutrófico</span><span class="lp-cls-range">&gt; 67</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP: Análise Individual -->
+<div class="lp-overlay" id="individual-overlay">
+  <div class="lp-modal">
+    <div class="lp-header">
+      <button class="lp-close" data-close>✕</button>
+      <div class="lp-title">Análise<span>Individual</span></div>
+      <div class="lp-sub">Avaliação detalhada de uma única amostra</div>
+    </div>
+    <div class="lp-body">
+      <p>Voltada para o cálculo completo de um único ponto de coleta, com laudo interpretativo gerado automaticamente.</p>
+      <ul class="lp-feat-list">
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Resultado e Classificação do IQA e do IET</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Resultado por Parâmetro</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Curvas NSF por Parâmetro</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Avaliação Integrada IQA + IET</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Critérios Regionais por Estado</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Escala Trófica Visual</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Laudo Interpretativo (com exportação em PDF)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP: Análise Multiamostra -->
+<div class="lp-overlay" id="multi-overlay">
+  <div class="lp-modal">
+    <div class="lp-header">
+      <button class="lp-close" data-close>✕</button>
+      <div class="lp-title">Análise<span>Multiamostra</span></div>
+      <div class="lp-sub">Vários pontos de coleta em um relatório único</div>
+    </div>
+    <div class="lp-body">
+      <p>Voltada para a avaliação conjunta de vários pontos de uma mesma campanha ou área de monitoramento.</p>
+      <ul class="lp-feat-list">
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Resultado e Classificação do IQA e do IET</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Tabela Comparativa entre Pontos</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Gráfico de Barras para IQA e para IET</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Classificação da Avaliação Integrada por Amostra</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Interpretação da Média dos Resultados por Índice</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Relatório Comparativo (com exportação em PDF)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP: Critérios Regionais -->
+<div class="lp-overlay" id="criterios-overlay">
+  <div class="lp-modal">
+    <div class="lp-header">
+      <button class="lp-close" data-close>✕</button>
+      <div class="lp-title">Critérios<span>Regionais</span></div>
+      <div class="lp-sub">Como a SAIQA escolhe o critério certo</div>
+    </div>
+    <div class="lp-body">
+      <p>O critério de classificação do IQA varia conforme o estado da coleta. A SAIQA identifica automaticamente qual aplicar, a partir do estado informado, sem exigir esse conhecimento do usuário.</p>
+      <div>
+        <div class="lp-group-label" style="color:var(--aqua)">CETESB <span style="opacity:.7;font-weight:400;text-transform:none">— declaram uso próprio</span></div>
+        <div class="lp-badges"><span class="uf-badge uf-cetesb">SP</span><span class="uf-badge uf-cetesb">BA</span><span class="uf-badge uf-cetesb">CE</span><span class="uf-badge uf-cetesb">ES</span><span class="uf-badge uf-cetesb">GO</span><span class="uf-badge uf-cetesb">MS</span><span class="uf-badge uf-cetesb">PB</span><span class="uf-badge uf-cetesb">PE</span></div>
+      </div>
+      <div>
+        <div class="lp-group-label" style="color:var(--foam)">ANA <span style="opacity:.7;font-weight:400;text-transform:none">— demais estados, segue as faixas da CETESB</span></div>
+        <div class="lp-badges"><span class="uf-badge uf-outros">AC</span><span class="uf-badge uf-outros">AM</span><span class="uf-badge uf-outros">AP</span><span class="uf-badge uf-outros">DF</span><span class="uf-badge uf-outros">MA</span><span class="uf-badge uf-outros">PA</span><span class="uf-badge uf-outros">PI</span><span class="uf-badge uf-outros">RO</span><span class="uf-badge uf-outros">RR</span><span class="uf-badge uf-outros">SC</span><span class="uf-badge uf-outros">SE</span><span class="uf-badge uf-outros">TO</span></div>
+      </div>
+      <div>
+        <div class="lp-group-label" style="color:var(--accent)">IGAM <span style="opacity:.7;font-weight:400;text-transform:none">— declaram uso próprio, faixas mais rigorosas</span></div>
+        <div class="lp-badges"><span class="uf-badge uf-igam">AL</span><span class="uf-badge uf-igam">MG</span><span class="uf-badge uf-igam">MT</span><span class="uf-badge uf-igam">PR</span><span class="uf-badge uf-igam">RJ</span><span class="uf-badge uf-igam">RN</span><span class="uf-badge uf-igam">RS</span></div>
+      </div>
+      <div class="lp-note">O valor numérico do IQA não muda entre os critérios — apenas o rótulo da classificação.</div>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP: Corpo D'água -->
+<div class="lp-overlay" id="corpo-overlay">
+  <div class="lp-modal">
+    <div class="lp-header">
+      <button class="lp-close" data-close>✕</button>
+      <div class="lp-title">Corpo<span>D'água</span></div>
+      <div class="lp-sub">Aplicação do IET por tipo de ambiente</div>
+    </div>
+    <div class="lp-body">
+      <p>O IET deve ser aplicado conforme o tipo de corpo hídrico. Ambientes lênticos retêm mais a água, favorecendo o acúmulo de nutrientes; ambientes lóticos têm maior renovação, o que altera essa dinâmica.</p>
+      <div class="lp-badges">
+        <span class="uf-badge uf-cetesb">Reservatório</span><span class="uf-badge uf-cetesb">Açude</span><span class="uf-badge uf-cetesb">Lago</span>
+        <span class="uf-badge uf-igam">Rio</span><span class="uf-badge uf-igam">Riacho</span>
+      </div>
+      <div class="lp-note">Selecionar o tipo errado altera as equações de cálculo do IET e pode gerar classificações inadequadas.</div>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP: Avaliação Integrada -->
+<div class="lp-overlay" id="integrada-overlay">
+  <div class="lp-modal">
+    <div class="lp-header">
+      <button class="lp-close" data-close>✕</button>
+      <div class="lp-title">Avaliação<span>Integrada IQA+IET</span></div>
+      <div class="lp-sub">Como os dois índices se combinam</div>
+    </div>
+    <div class="lp-body">
+      <p>Quando IQA e IET são calculados juntos, a SAIQA cruza os dois resultados numa classificação única, com a Escala de Classificação Integrada (ECI) animada indicando o resultado.</p>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP: Laudo Interpretativo -->
+<div class="lp-overlay" id="laudo-overlay">
+  <div class="lp-modal">
+    <div class="lp-header">
+      <button class="lp-close" data-close>✕</button>
+      <div class="lp-title">Laudo<span>Interpretativo</span></div>
+      <div class="lp-sub">O que compõe o documento gerado na Análise Individual</div>
+    </div>
+    <div class="lp-body">
+      <ul class="lp-feat-list">
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Curvas de qualidade NSF animadas, posicionando cada parâmetro na escala</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Alerta automático quando fósforo e clorofila-a indicam classes tróficas diferentes</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Subíndices individuais e os parâmetros de maior impacto, positivo e negativo</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP: Relatório Comparativo -->
+<div class="lp-overlay" id="relatorio-overlay">
+  <div class="lp-modal">
+    <div class="lp-header">
+      <button class="lp-close" data-close>✕</button>
+      <div class="lp-title">Relatório<span>Comparativo</span></div>
+      <div class="lp-sub">O que compõe o documento gerado na Análise Multiamostra</div>
+    </div>
+    <div class="lp-body">
+      <ul class="lp-feat-list">
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Tabela com os dois critérios regionais do IQA, o aplicável em destaque</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Gráficos de barras interativos, com a média do conjunto</li>
+        <li><img src="https://saiqa.online/assets/saiqa_ok.svg" alt="" width="16" height="16"> Panorama Geral com interpretação automática, incluindo alertas de estado trófico crítico</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP: Resultado ECI -->
+<div class="lp-overlay" id="eci-overlay">
+  <div class="lp-modal">
+    <div class="lp-header">
+      <button class="lp-close" data-close>✕</button>
+      <div class="lp-title">Avaliação Integrada<span>IQA + IET</span></div>
+      <div class="lp-sub">Resultado da combinação escolhida</div>
+    </div>
+    <div class="lp-body">
+      <div class="eci-gauge-card" style="margin-top:0">
+        <div class="eci-gauge-row">
+          <div class="eci-gauge-wrap">
+            <svg class="eci-gauge-svg" viewBox="0 0 3034 1640" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path class="ig-seg" id="ig-equ" fill="#0097A7" fill-rule="nonzero" d="M3034 1517c0,-418.9 -169.9,-798.2 -444.4,-1072.7 -274.5,-274.5 -653.7,-444.3 -1072.6,-444.3 -418.9,0 -798.1,169.8 -1072.7,444.3 -274.5,274.5 -444.3,653.8 -444.3,1072.7l488.1 0c0,-284.2 115.2,-541.4 301.4,-727.6 186.1,-186.1 443.4,-301.3 727.5,-301.3 284.1,0 541.3,115.2 727.5,301.3 186.2,186.2 301.3,443.4 301.3,727.6l488.2 0z"/>
+              <path class="ig-seg" id="ig-fav" fill="#00796B" fill-rule="nonzero" d="M2744.1 625.8c-142.9,-196.8 -328.3,-353.2 -538.6,-460.4 -210.6,-107.2 -446,-165.4 -688.5,-165.4 -418.9,0 -798.1,169.8 -1072.7,444.3 -274.5,274.5 -444.3,653.8 -444.3,1072.7l488.1 0c0,-284.2 115.2,-541.4 301.4,-727.6 186.1,-186.1 443.4,-301.3 727.5,-301.3 164.9,0 324.7,39.4 467.3,112.1 142.9,72.8 268.6,178.7 365.2,311.6l394.6 -286z"/>
+              <path class="ig-seg" id="ig-mod" fill="#FF9900" fill-rule="nonzero" d="M1985.6 74.7c-74.2,-24.1 -151.5,-42.6 -231.3,-55.2 -81.8,-13 -161.1,-19.5 -237.3,-19.5 -418.9,0 -798.1,169.8 -1072.7,444.3 -274.5,274.5 -444.3,653.8 -444.3,1072.7l488.1 0c0,-284.2 115.2,-541.4 301.4,-727.6 186.1,-186.1 443.4,-301.3 727.5,-301.3 57.4,0 111.3,4 161.1,11.9 51.7,8.2 104.1,20.9 156.9,38.1l150.6 -463.4z"/>
+              <path class="ig-seg" id="ig-des" fill="#ED4D65" fill-rule="nonzero" d="M1048.3 74.7c-312.5,101.5 -574.6,297.9 -758.5,551.1 -184,253.2 -289.8,563 -289.8,891.2l488.1 0c0,-223.3 71.7,-433.6 196.4,-605.2 124.7,-171.7 302.5,-304.9 514.4,-373.7l-150.6 -463.4z"/>
+              <path class="ig-seg" id="ig-cri" fill="#330066" fill-rule="nonzero" d="M289.8 625.8c-93.8,129.2 -166.2,272 -215.1,422.6 -49.2,151.3 -74.7,309.4 -74.7,468.6l488.1 0c0,-109.6 17.1,-216.9 49.9,-318 33.1,-101.9 82.4,-198.9 146.5,-287.2l-394.7 -286z"/>
+              <path id="eci-pointer" class="eci-gauge-pointer" d="M 2503 1517 L 1517 1555 L 1335 1517 L 1517 1479 Z" transform="rotate(-180,1517,1517)"/>
+              <circle class="eci-gauge-cap" cx="1517" cy="1517" r="61"/>
+            </svg>
+            <div class="eci-gauge-readout">
+              <div class="eci-gauge-cls" id="eci-cls-label">Selecione as classes</div>
+            </div>
+          </div>
+
+          <div class="eci-gauge-legend">
+            <span><i style="background:#330066"></i>Crítico</span>
+            <span><i style="background:#ED4D65"></i>Desfavorável</span>
+            <span><i style="background:#FF9900"></i>Moderado</span>
+            <span><i style="background:#00796B"></i>Favorável</span>
+            <span><i style="background:#0097A7"></i>Equilibrado</span>
+          </div>
+        </div>
+      </div>
+      <p id="eci-popup-desc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ---------- Popups (IQA, IET, Corpo D'água, ECI) ----------
+(function(){
+  function abrirLP(id){
+    const ov = document.getElementById(id);
+    if(ov) ov.classList.add('open');
+  }
+  function fecharLP(ov){
+    ov.classList.remove('open');
+  }
+  document.querySelectorAll('[data-modal]').forEach(btn=>{
+    btn.addEventListener('click', ()=>abrirLP(btn.getAttribute('data-modal')));
+  });
+  document.querySelectorAll('.lp-overlay').forEach(ov=>{
+    ov.querySelector('[data-close]').addEventListener('click', ()=>fecharLP(ov));
+    ov.addEventListener('click', (e)=>{ if(e.target === ov) fecharLP(ov); });
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key !== 'Escape') return;
+    document.querySelectorAll('.lp-overlay.open').forEach(ov=>fecharLP(ov));
+  });
+  window.abrirLP = abrirLP;
+})();
+
+// ---------- Curvas de Qualidade NSF (OD e Fósforo) — fórmulas de SAIQA/js/app.js ----------
+(function(){
+  function curva_od(x){
+    return Math.max(0, Math.min(100, 100.8 * Math.exp(Math.pow(x-106,2)/(-3745))));
+  }
+  function curva_fos(x){
+    if(x<=0) return 100;
+    return Math.max(2, Math.min(100, 213.7 * Math.exp(-1.68 * Math.pow(x, 0.3325))));
+  }
+  function gerarPontos(fn, xmin, xmax, n){
+    const pts=[];
+    for(let i=0;i<=n;i++){
+      const x = xmin + (xmax-xmin)*(i/n);
+      pts.push({x: Math.round(x*100)/100, y: Math.round(Math.max(0,Math.min(100,fn(x)))*10)/10});
+    }
+    return pts;
+  }
+
+  let chOd = null, chFos = null;
+  function initCurvas(){
+    if(typeof Chart === 'undefined') return;
+    if(chOd){ chOd.destroy(); chOd=null; }
+    if(chFos){ chFos.destroy(); chFos=null; }
+    const base = {
+      type:'line',
+      options:{
+        responsive:true,
+        animations:{
+          x:{type:'number', easing:'easeOutQuart', duration:1400, from:0, delay(ctx){ return ctx.dataIndex*8; }},
+          y:{easing:'easeOutQuart', duration:1400, delay(ctx){ return ctx.dataIndex*8; }}
+        },
+        scales:{
+          x:{type:'linear', ticks:{color:'#a8dce8', font:{size:9}}, grid:{color:'rgba(255,255,255,.06)'}},
+          y:{min:0, max:100, ticks:{color:'#a8dce8', font:{size:9}}, grid:{color:'rgba(255,255,255,.06)'}}
+        },
+        plugins:{legend:{display:false}}
+      }
+    };
+    chOd = new Chart(document.getElementById('curve-od'), Object.assign({}, base, {
+      data:{datasets:[{data:gerarPontos(curva_od,0,200,80), borderColor:'#41b8d5', backgroundColor:'rgba(65,184,213,.15)', fill:true, pointRadius:0, tension:.3, borderWidth:2}]}
+    }));
+    chFos = new Chart(document.getElementById('curve-fos'), Object.assign({}, base, {
+      data:{datasets:[{data:gerarPontos(curva_fos,0.01,10,80), borderColor:'#f59523', backgroundColor:'rgba(245,149,35,.15)', fill:true, pointRadius:0, tension:.3, borderWidth:2}]}
+    }));
+  }
+  document.querySelectorAll('[data-modal="iqa-overlay"]').forEach(btn=>{
+    btn.addEventListener('click', initCurvas);
+  });
+  document.querySelectorAll('.curve-box').forEach(box=>{
+    box.style.cursor = 'pointer';
+    box.addEventListener('click', initCurvas);
+  });
+})();
+
+// ---------- Botão Voltar ao Topo ----------
+window.addEventListener('scroll', function(){
+  const btn = document.getElementById('backToTop');
+  if(btn) btn.classList.toggle('visible', window.scrollY > 300);
+});
+
+// ---------- Marca d'água fixa (a partir de "A história") ----------
+(function(){
+  const wm = document.getElementById('pageWatermark');
+  const origem = document.querySelector('.origem');
+  const footer = document.querySelector('footer');
+  if(!wm || !origem || !footer) return;
+  function toggle(){
+    const chegouNaHistoria = window.scrollY >= origem.offsetTop - 200;
+    const footerTop = footer.getBoundingClientRect().top + window.scrollY;
+    const chegouNoRodape = (window.scrollY + window.innerHeight) >= footerTop;
+    wm.classList.toggle('visible', chegouNaHistoria && !chegouNoRodape);
+  }
+  window.addEventListener('scroll', toggle);
+  toggle();
+})();
+
+// ---------- Crédito automático ao copiar texto de conteúdo ----------
+document.addEventListener('copy', function(e){
+  const selection = window.getSelection();
+  if(!selection || selection.toString().trim().length < 30) return;
+  const anchor = selection.anchorNode;
+  const el = anchor.nodeType === 1 ? anchor : anchor.parentElement;
+  if(!el || !el.closest('p, li, h2, h3, span')) return;
+  if(el.closest('a, .contato-links, .contato-footer, .autora-links, footer')) return;
+  const texto = selection.toString();
+  e.clipboardData.setData('text/plain', texto + '\n\nFonte: SAIQA (saiqa.online), por Andrezza Rosa.');
+  e.preventDefault();
+});
+
+// ---------- Reveal on scroll ----------
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  },{threshold:.15});
+  els.forEach(el=>obs.observe(el));
+})();
+
+// ---------- Contador Validação ----------
+(function(){
+  const el = document.getElementById('val-counter');
+  const obs = new IntersectionObserver((entries)=>{
+    if(!entries[0].isIntersecting) return;
+    obs.disconnect();
+    let v = 0;
+    const t0 = performance.now(), dur = 1400;
+    function step(now){
+      const p = Math.min(1,(now-t0)/dur);
+      v = Math.round(100 * (1-Math.pow(1-p,3)));
+      el.textContent = v + '%';
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  },{threshold:.6});
+  obs.observe(el);
+})();
+
+// ---------- Escala ECI interativa ----------
+(function(){
+  const IQA_OPTS = ['Ótima','Boa','Razoável','Ruim','Péssima'];
+  const IET_OPTS = ['Ultraoligotrófico','Oligotrófico','Mesotrófico','Eutrófico','Hipereutrófico'];
+  const IQA_COLORS = {'Ótima':'#3d5fa0','Boa':'#6CBD45','Razoável':'#D4A017','Ruim':'#b03020','Péssima':'#7b5b9a'};
+  const IET_COLORS = {'Ultraoligotrófico':'#3d5fa0','Oligotrófico':'#6CBD45','Mesotrófico':'#D4A017','Eutrófico':'#F59523','Hipereutrófico':'#7b5b9a'};
+
+  const DESC = {
+    'Crítico':'Situação de comprometimento crítico da qualidade da água, seja pelo IQA ou pelo IET. Indica a necessidade urgente de atenção e monitoramento do corpo hídrico.',
+    'Desfavorável':'A combinação dos índices aponta para um cenário de qualidade comprometida, com sinais de poluição ou eutrofização que merecem acompanhamento.',
+    'Moderado':'Condição intermediária: a água apresenta qualidade satisfatória em um dos índices, mas há sinais de enriquecimento por nutrientes ou impacto moderado a considerar.',
+    'Favorável':'Cenário positivo, com boa qualidade da água e baixo grau de trofia. Indica um corpo hídrico bem conservado.',
+    'Equilibrado':'A melhor combinação possível entre os dois índices: água de ótima qualidade e baixíssima concentração de nutrientes — o equilíbrio ambiental ideal.'
+  };
+
+  function calcIntegrado(iq, it){
+    const otimos=['Ótima'], bons=['Boa'], razoaveis=['Razoável'], ruins=['Ruim'], pessimos=['Péssima'];
+    const ultra=['Ultraoligotrófico'], oligo=['Oligotrófico'], meso=['Mesotrófico'], eut=['Eutrófico'], pior=['Hipereutrófico'];
+
+    if(pessimos.includes(iq)||pior.includes(it)) return 'Crítico';
+    if(ruins.includes(iq)||eut.includes(it)) return 'Desfavorável';
+    if((otimos.includes(iq)||bons.includes(iq)||razoaveis.includes(iq))&&meso.includes(it)) return 'Moderado';
+    if(razoaveis.includes(iq)) return 'Moderado';
+    if(bons.includes(iq)&&(ultra.includes(it)||oligo.includes(it))) return 'Favorável';
+    if(otimos.includes(iq)&&(ultra.includes(it)||oligo.includes(it))) return 'Equilibrado';
+    return 'Moderado';
+  }
+
+  const angGauge={'Crítico':-162,'Desfavorável':-126,'Moderado':-90,'Favorável':-54,'Equilibrado':-18};
+  const segGauge={'Equilibrado':'ig-equ','Favorável':'ig-fav','Moderado':'ig-mod','Desfavorável':'ig-des','Crítico':'ig-cri'};
+  const colorGauge={'Crítico':'#330066','Desfavorável':'#ED4D65','Moderado':'#FF9900','Favorável':'#00796B','Equilibrado':'#0097A7'};
+
+  const pointer = document.getElementById('eci-pointer');
+  const clsLabel = document.getElementById('eci-cls-label');
+  const verResultadoBtn = document.getElementById('eci-ver-resultado');
+  const popupDesc = document.getElementById('eci-popup-desc');
+  const segIds = ['ig-cri','ig-des','ig-mod','ig-fav','ig-equ'];
+
+  let selIqa = null, selIet = null;
+  let currentAngle = -180;
+
+  function renderPills(container, opts, colors, onPick){
+    opts.forEach(opt=>{
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'eci-pill';
+      btn.textContent = opt;
+      btn.style.setProperty('--pc', colors[opt]);
+      btn.onclick = ()=>{
+        container.querySelectorAll('.eci-pill').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        onPick(opt);
+      };
+      container.appendChild(btn);
+    });
+  }
+  renderPills(document.getElementById('eci-iqa-pills'), IQA_OPTS, IQA_COLORS, v=>{ selIqa=v; update(); });
+  renderPills(document.getElementById('eci-iet-pills'), IET_OPTS, IET_COLORS, v=>{ selIet=v; update(); });
+
+  let animGen = 0;
+  function tweenAngle(from, to, dur, myGen, onDone){
+    const t0 = performance.now();
+    function ease(t){ return 1-Math.pow(1-t,3); }
+    function frame(now){
+      if(myGen !== animGen) return; // uma seleção mais nova assumiu o controle
+      const p = Math.min(1,(now-t0)/dur);
+      const ang = from + (to-from)*ease(p);
+      pointer.setAttribute('transform', `rotate(${ang},1517,1517)`);
+      if(p<1) requestAnimationFrame(frame); else { currentAngle = to; if(onDone) onDone(); }
+    }
+    requestAnimationFrame(frame);
+  }
+  // Sobe até o fim da escala, pausa, depois assenta no valor final — mesmo padrão dos gauges do laudo real (app.js: width 0→100% em 1s, pausa 100ms, 100%→valor em 1.5s)
+  function animatePointer(to, onMid){
+    const myGen = ++animGen; // invalida qualquer animação anterior ainda em andamento
+    tweenAngle(currentAngle, 0, 1000, myGen, ()=>{
+      if(onMid) onMid();
+      setTimeout(()=>{
+        if(myGen !== animGen) return;
+        tweenAngle(0, to, 1500, myGen);
+      }, 100);
+    });
+    return myGen;
+  }
+
+  function update(){
+    if(!selIqa || !selIet) return;
+    const cls = calcIntegrado(selIqa, selIet);
+    const alvo = angGauge[cls];
+
+    currentAngle = -180;
+    pointer.setAttribute('transform', `rotate(-180,1517,1517)`);
+    segIds.forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('active'); });
+    clsLabel.style.color = '';
+    clsLabel.textContent = 'Selecione as classes';
+    abrirLP('eci-overlay');
+
+    animatePointer(alvo, ()=>{
+      const activeEl = document.getElementById(segGauge[cls]);
+      if(activeEl) activeEl.classList.add('active');
+    });
+
+    clsLabel.style.color = colorGauge[cls];
+    clsLabel.textContent = cls;
+    popupDesc.textContent = DESC[cls];
+
+    verResultadoBtn.style.display = 'inline-block';
+  }
+
+  function replay(){
+    if(!selIqa || !selIet) return;
+    const cls = calcIntegrado(selIqa, selIet);
+    const alvo = angGauge[cls];
+    animGen++; // cancela animação em andamento
+    currentAngle = -180; // volta o ponteiro ao início
+    pointer.setAttribute('transform', `rotate(-180,1517,1517)`);
+    segIds.forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('active'); });
+    requestAnimationFrame(()=>{
+      animatePointer(alvo, ()=>{
+        const activeEl = document.getElementById(segGauge[cls]);
+        if(activeEl) activeEl.classList.add('active');
+      });
+    });
+  }
+  document.querySelector('.eci-gauge-card').addEventListener('click', replay);
+
+  verResultadoBtn.addEventListener('click', ()=>{
+    if(!selIqa || !selIet) return;
+    abrirLP('eci-overlay');
+  });
+
+  document.getElementById('eci-limpar').addEventListener('click', ()=>{
+    selIqa = null; selIet = null;
+    jaDesceu = false;
+    animGen++; // cancela qualquer animação em andamento
+
+    document.querySelectorAll('.eci-pill.active').forEach(b=>b.classList.remove('active'));
+    segIds.forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('active'); });
+
+    const t0 = performance.now(), dur = 500, from = currentAngle, to = -180;
+    function ease(t){ return 1-Math.pow(1-t,3); }
+    function frame(now){
+      const p = Math.min(1,(now-t0)/dur);
+      const ang = from + (to-from)*ease(p);
+      pointer.setAttribute('transform', `rotate(${ang},1517,1517)`);
+      if(p<1) requestAnimationFrame(frame); else currentAngle = to;
+    }
+    requestAnimationFrame(frame);
+
+    clsLabel.style.color = '';
+    clsLabel.textContent = 'Selecione as classes';
+    verResultadoBtn.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>
