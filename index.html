@@ -232,16 +232,20 @@ p{font-size:clamp(.92rem,2.4vw,1.02rem);color:var(--foam)}
 .autora h2{color:var(--ocean)}
 .autora h2 span{color:var(--aqua)}
 .autora-foto{
-  width:150px;height:150px;border-radius:50%;
+  float:left;width:150px;height:150px;border-radius:50%;
   background-image:url('foto-autora.jpg');background-size:cover;background-position:center;
-  margin:0 0 .85rem;border:3px solid var(--aqua);
-  box-shadow:0 0 0 6px rgba(65,184,213,.15),0 12px 28px rgba(10,22,40,.25);
+  margin:.25rem 1.25rem .75rem 0;border:3px solid var(--blush);
+  box-shadow:0 0 0 6px rgba(212,116,138,.18),0 12px 28px rgba(10,22,40,.25);
   -webkit-user-drag:none;user-select:none;-webkit-touch-callout:none;
+}
+@media(max-width:480px){
+  .autora-foto{float:none;display:block;margin:0 auto .85rem}
 }
 .autora-bio{max-width:640px;color:#3d5568}
 .autora-bio + .autora-bio{margin-top:.65rem}
 .autora-bio b{color:var(--deep)}
 .autora-contact-label{
+  clear:both;
   font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
   color:var(--wave);margin-top:.9rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;
 }
