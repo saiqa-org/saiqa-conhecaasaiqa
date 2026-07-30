@@ -177,21 +177,7 @@ p{font-size:clamp(.92rem,2.4vw,1.02rem);color:var(--foam)}
 /* ---------- ESCALA ECI INTERATIVA ---------- */
 .eci-section{background:radial-gradient(120% 100% at 50% 100%,#132c47 0%,var(--deep) 60%)}
 .eci-panel{margin-top:2rem}
-.eci-picker{display:flex;flex-direction:column;gap:1.1rem}
-.eci-field{flex:1;min-width:0}
-@media(min-width:560px){.eci-picker{flex-direction:row;align-items:flex-start}}
-.eci-field label{display:block;font-family:'Syne',sans-serif;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--foam);margin-bottom:.55rem;text-align:center}
-.eci-crit{text-transform:none;letter-spacing:0;opacity:.65;font-weight:400}
-.eci-pills{display:flex;flex-direction:column;gap:.5rem}
-.eci-pill{
-  font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:700;line-height:1.25;
-  background:rgba(255,255,255,.05);border:1.5px solid var(--pc,rgba(65,184,213,.3));
-  color:var(--pc,var(--foam));border-radius:8px;width:100%;
-  text-align:center;padding:.55rem .5rem;cursor:pointer;transition:all .2s;
-  white-space:normal;word-break:break-word;overflow-wrap:break-word;
-}
-.eci-pill:hover{background:color-mix(in srgb, var(--pc,var(--aqua)) 18%, transparent)}
-.eci-pill.active{background:var(--pc,var(--accent));border-color:var(--pc,var(--accent));color:var(--white)}
+.eci-desc{text-align:center;color:var(--foam);font-size:.9rem;max-width:460px;margin:1.1rem auto 0;min-height:1.4em}
 
 /* Card do gadget ECI */
 .eci-gauge-card{
@@ -208,15 +194,15 @@ p{font-size:clamp(.92rem,2.4vw,1.02rem);color:var(--foam)}
 .eci-gauge-cap{fill:var(--deep)}
 .eci-gauge-readout{text-align:center;margin-top:.6rem;position:relative;z-index:2}
 .eci-gauge-cls{font-family:'Syne',sans-serif;font-weight:800;font-size:1.35rem;transition:color .3s;color:var(--deep)}
-.eci-gauge-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem .9rem;font-size:.68rem}
-.eci-gauge-legend span{display:flex;align-items:center;gap:.35rem;font-family:'Syne',sans-serif;font-weight:700;color:var(--deep)}
-.eci-gauge-legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
-.btn-eci-limpar{
-  display:block;margin:.9rem auto 0;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:400;
-  color:var(--foam);background:transparent;border:1px solid rgba(65,184,213,.3);border-radius:8px;
-  padding:.5rem 1rem;cursor:pointer;transition:all .2s;
+.eci-gauge-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem .6rem;font-size:.68rem}
+.eci-legend-btn{
+  display:flex;align-items:center;gap:.35rem;font-family:'Syne',sans-serif;font-weight:700;color:var(--deep);
+  background:rgba(255,255,255,.35);border:1.5px solid transparent;border-radius:8px;
+  padding:.4rem .6rem;cursor:pointer;transition:all .2s;
 }
-.btn-eci-limpar:hover{border-color:var(--flamingo);color:var(--flamingo)}
+.eci-legend-btn:hover{background:rgba(255,255,255,.6)}
+.eci-legend-btn.active{background:rgba(255,255,255,.85);border-color:var(--deep)}
+.eci-legend-btn i{width:9px;height:9px;border-radius:3px;display:inline-block}
 @media(min-width:560px){
   .eci-gauge-row{flex-direction:row;justify-content:center;gap:2rem}
   .eci-gauge-legend{flex-direction:column;justify-content:center}
@@ -579,22 +565,36 @@ footer img{width:150px;opacity:.85}
   <div class="eyebrow reveal">Experimente</div>
   <div class="wrap">
     <h2 class="reveal reveal-delay-1">Escala de <span>Classificação Integrada (ECI)</span></h2>
-    <p class="reveal reveal-delay-1">Escolha uma classe de IQA e uma classe de IET e veja como a SAIQA combina os dois índices em uma única leitura ambiental, a mesma lógica usada nos laudos reais da saiqa.online.</p>
+    <p class="reveal reveal-delay-1">A SAIQA cruza o IQA e o IET numa única leitura ambiental, do Crítico ao Equilibrado. Clique em uma classificação e veja a escala animar.</p>
 
     <div class="eci-panel reveal reveal-delay-2">
-      <div class="eci-picker">
-        <div class="eci-field">
-          <label style="color:var(--aqua)">Classificação do IQA <span class="eci-crit">(critério CETESB/ANA)</span></label>
-          <div class="eci-pills" id="eci-iqa-pills"></div>
-        </div>
-        <div class="eci-field">
-          <label style="color:var(--lima)">Classificação do IET</label>
-          <div class="eci-pills" id="eci-iet-pills"></div>
+      <div class="eci-gauge-card" style="margin-top:0">
+        <div class="eci-gauge-row">
+          <div class="eci-gauge-wrap">
+            <svg class="eci-gauge-svg" viewBox="0 0 3034 1640" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path class="ig-seg" id="ig-equ" fill="#0097A7" fill-rule="nonzero" d="M3034 1517c0,-418.9 -169.9,-798.2 -444.4,-1072.7 -274.5,-274.5 -653.7,-444.3 -1072.6,-444.3 -418.9,0 -798.1,169.8 -1072.7,444.3 -274.5,274.5 -444.3,653.8 -444.3,1072.7l488.1 0c0,-284.2 115.2,-541.4 301.4,-727.6 186.1,-186.1 443.4,-301.3 727.5,-301.3 284.1,0 541.3,115.2 727.5,301.3 186.2,186.2 301.3,443.4 301.3,727.6l488.2 0z"/>
+              <path class="ig-seg" id="ig-fav" fill="#00796B" fill-rule="nonzero" d="M2744.1 625.8c-142.9,-196.8 -328.3,-353.2 -538.6,-460.4 -210.6,-107.2 -446,-165.4 -688.5,-165.4 -418.9,0 -798.1,169.8 -1072.7,444.3 -274.5,274.5 -444.3,653.8 -444.3,1072.7l488.1 0c0,-284.2 115.2,-541.4 301.4,-727.6 186.1,-186.1 443.4,-301.3 727.5,-301.3 164.9,0 324.7,39.4 467.3,112.1 142.9,72.8 268.6,178.7 365.2,311.6l394.6 -286z"/>
+              <path class="ig-seg" id="ig-mod" fill="#FF9900" fill-rule="nonzero" d="M1985.6 74.7c-74.2,-24.1 -151.5,-42.6 -231.3,-55.2 -81.8,-13 -161.1,-19.5 -237.3,-19.5 -418.9,0 -798.1,169.8 -1072.7,444.3 -274.5,274.5 -444.3,653.8 -444.3,1072.7l488.1 0c0,-284.2 115.2,-541.4 301.4,-727.6 186.1,-186.1 443.4,-301.3 727.5,-301.3 57.4,0 111.3,4 161.1,11.9 51.7,8.2 104.1,20.9 156.9,38.1l150.6 -463.4z"/>
+              <path class="ig-seg" id="ig-des" fill="#ED4D65" fill-rule="nonzero" d="M1048.3 74.7c-312.5,101.5 -574.6,297.9 -758.5,551.1 -184,253.2 -289.8,563 -289.8,891.2l488.1 0c0,-223.3 71.7,-433.6 196.4,-605.2 124.7,-171.7 302.5,-304.9 514.4,-373.7l-150.6 -463.4z"/>
+              <path class="ig-seg" id="ig-cri" fill="#330066" fill-rule="nonzero" d="M289.8 625.8c-93.8,129.2 -166.2,272 -215.1,422.6 -49.2,151.3 -74.7,309.4 -74.7,468.6l488.1 0c0,-109.6 17.1,-216.9 49.9,-318 33.1,-101.9 82.4,-198.9 146.5,-287.2l-394.7 -286z"/>
+              <path id="eci-pointer" class="eci-gauge-pointer" d="M 2503 1517 L 1517 1555 L 1335 1517 L 1517 1479 Z" transform="rotate(-180,1517,1517)"/>
+              <circle class="eci-gauge-cap" cx="1517" cy="1517" r="61"/>
+            </svg>
+            <div class="eci-gauge-readout">
+              <div class="eci-gauge-cls" id="eci-cls-label">Clique numa classificação</div>
+            </div>
+          </div>
+
+          <div class="eci-gauge-legend">
+            <button type="button" class="eci-legend-btn" data-cls="Crítico"><i style="background:#330066"></i>Crítico</button>
+            <button type="button" class="eci-legend-btn" data-cls="Desfavorável"><i style="background:#ED4D65"></i>Desfavorável</button>
+            <button type="button" class="eci-legend-btn" data-cls="Moderado"><i style="background:#FF9900"></i>Moderado</button>
+            <button type="button" class="eci-legend-btn" data-cls="Favorável"><i style="background:#00796B"></i>Favorável</button>
+            <button type="button" class="eci-legend-btn" data-cls="Equilibrado"><i style="background:#0097A7"></i>Equilibrado</button>
+          </div>
         </div>
       </div>
-
-      <button type="button" class="btn-eci" id="eci-ver-resultado" style="display:none;margin:1rem auto 0">Ver resultado ↗</button>
-      <button type="button" class="btn-eci-limpar" id="eci-limpar">&#x21BA; Limpar seleção</button>
+      <p id="eci-popup-desc" class="eci-desc"></p>
     </div>
   </div>
   <div class="section-nav">
@@ -906,46 +906,6 @@ footer img{width:150px;opacity:.85}
   </div>
 </div>
 
-<!-- POPUP: Resultado ECI -->
-<div class="lp-overlay" id="eci-overlay">
-  <div class="lp-modal">
-    <div class="lp-header">
-      <button class="lp-close" data-close>✕</button>
-      <div class="lp-title">Avaliação Integrada<span>IQA + IET</span></div>
-      <div class="lp-sub">Resultado da combinação escolhida</div>
-    </div>
-    <div class="lp-body">
-      <div class="eci-gauge-card" style="margin-top:0">
-        <div class="eci-gauge-row">
-          <div class="eci-gauge-wrap">
-            <svg class="eci-gauge-svg" viewBox="0 0 3034 1640" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path class="ig-seg" id="ig-equ" fill="#0097A7" fill-rule="nonzero" d="M3034 1517c0,-418.9 -169.9,-798.2 -444.4,-1072.7 -274.5,-274.5 -653.7,-444.3 -1072.6,-444.3 -418.9,0 -798.1,169.8 -1072.7,444.3 -274.5,274.5 -444.3,653.8 -444.3,1072.7l488.1 0c0,-284.2 115.2,-541.4 301.4,-727.6 186.1,-186.1 443.4,-301.3 727.5,-301.3 284.1,0 541.3,115.2 727.5,301.3 186.2,186.2 301.3,443.4 301.3,727.6l488.2 0z"/>
-              <path class="ig-seg" id="ig-fav" fill="#00796B" fill-rule="nonzero" d="M2744.1 625.8c-142.9,-196.8 -328.3,-353.2 -538.6,-460.4 -210.6,-107.2 -446,-165.4 -688.5,-165.4 -418.9,0 -798.1,169.8 -1072.7,444.3 -274.5,274.5 -444.3,653.8 -444.3,1072.7l488.1 0c0,-284.2 115.2,-541.4 301.4,-727.6 186.1,-186.1 443.4,-301.3 727.5,-301.3 164.9,0 324.7,39.4 467.3,112.1 142.9,72.8 268.6,178.7 365.2,311.6l394.6 -286z"/>
-              <path class="ig-seg" id="ig-mod" fill="#FF9900" fill-rule="nonzero" d="M1985.6 74.7c-74.2,-24.1 -151.5,-42.6 -231.3,-55.2 -81.8,-13 -161.1,-19.5 -237.3,-19.5 -418.9,0 -798.1,169.8 -1072.7,444.3 -274.5,274.5 -444.3,653.8 -444.3,1072.7l488.1 0c0,-284.2 115.2,-541.4 301.4,-727.6 186.1,-186.1 443.4,-301.3 727.5,-301.3 57.4,0 111.3,4 161.1,11.9 51.7,8.2 104.1,20.9 156.9,38.1l150.6 -463.4z"/>
-              <path class="ig-seg" id="ig-des" fill="#ED4D65" fill-rule="nonzero" d="M1048.3 74.7c-312.5,101.5 -574.6,297.9 -758.5,551.1 -184,253.2 -289.8,563 -289.8,891.2l488.1 0c0,-223.3 71.7,-433.6 196.4,-605.2 124.7,-171.7 302.5,-304.9 514.4,-373.7l-150.6 -463.4z"/>
-              <path class="ig-seg" id="ig-cri" fill="#330066" fill-rule="nonzero" d="M289.8 625.8c-93.8,129.2 -166.2,272 -215.1,422.6 -49.2,151.3 -74.7,309.4 -74.7,468.6l488.1 0c0,-109.6 17.1,-216.9 49.9,-318 33.1,-101.9 82.4,-198.9 146.5,-287.2l-394.7 -286z"/>
-              <path id="eci-pointer" class="eci-gauge-pointer" d="M 2503 1517 L 1517 1555 L 1335 1517 L 1517 1479 Z" transform="rotate(-180,1517,1517)"/>
-              <circle class="eci-gauge-cap" cx="1517" cy="1517" r="61"/>
-            </svg>
-            <div class="eci-gauge-readout">
-              <div class="eci-gauge-cls" id="eci-cls-label">Selecione as classes</div>
-            </div>
-          </div>
-
-          <div class="eci-gauge-legend">
-            <span><i style="background:#330066"></i>Crítico</span>
-            <span><i style="background:#ED4D65"></i>Desfavorável</span>
-            <span><i style="background:#FF9900"></i>Moderado</span>
-            <span><i style="background:#00796B"></i>Favorável</span>
-            <span><i style="background:#0097A7"></i>Equilibrado</span>
-          </div>
-        </div>
-      </div>
-      <p id="eci-popup-desc"></p>
-    </div>
-  </div>
-</div>
-
 <script>
 // ---------- Popups (IQA, IET, Corpo D'água, ECI) ----------
 (function(){
@@ -1089,11 +1049,6 @@ document.addEventListener('copy', function(e){
 
 // ---------- Escala ECI interativa ----------
 (function(){
-  const IQA_OPTS = ['Ótima','Boa','Razoável','Ruim','Péssima'];
-  const IET_OPTS = ['Ultraoligotrófico','Oligotrófico','Mesotrófico','Eutrófico','Hipereutrófico'];
-  const IQA_COLORS = {'Ótima':'#3d5fa0','Boa':'#6CBD45','Razoável':'#D4A017','Ruim':'#b03020','Péssima':'#7b5b9a'};
-  const IET_COLORS = {'Ultraoligotrófico':'#3d5fa0','Oligotrófico':'#6CBD45','Mesotrófico':'#D4A017','Eutrófico':'#F59523','Hipereutrófico':'#7b5b9a'};
-
   const DESC = {
     'Crítico':'Situação de comprometimento crítico da qualidade da água, seja pelo IQA ou pelo IET. Indica a necessidade urgente de atenção e monitoramento do corpo hídrico.',
     'Desfavorável':'A combinação dos índices aponta para um cenário de qualidade comprometida, com sinais de poluição ou eutrofização que merecem acompanhamento.',
@@ -1102,51 +1057,18 @@ document.addEventListener('copy', function(e){
     'Equilibrado':'A melhor combinação possível entre os dois índices: água de ótima qualidade e baixíssima concentração de nutrientes — o equilíbrio ambiental ideal.'
   };
 
-  function calcIntegrado(iq, it){
-    const otimos=['Ótima'], bons=['Boa'], razoaveis=['Razoável'], ruins=['Ruim'], pessimos=['Péssima'];
-    const ultra=['Ultraoligotrófico'], oligo=['Oligotrófico'], meso=['Mesotrófico'], eut=['Eutrófico'], pior=['Hipereutrófico'];
-
-    if(pessimos.includes(iq)||pior.includes(it)) return 'Crítico';
-    if(ruins.includes(iq)||eut.includes(it)) return 'Desfavorável';
-    if((otimos.includes(iq)||bons.includes(iq)||razoaveis.includes(iq))&&meso.includes(it)) return 'Moderado';
-    if(razoaveis.includes(iq)) return 'Moderado';
-    if(bons.includes(iq)&&(ultra.includes(it)||oligo.includes(it))) return 'Favorável';
-    if(otimos.includes(iq)&&(ultra.includes(it)||oligo.includes(it))) return 'Equilibrado';
-    return 'Moderado';
-  }
-
   const angGauge={'Crítico':-162,'Desfavorável':-126,'Moderado':-90,'Favorável':-54,'Equilibrado':-18};
   const segGauge={'Equilibrado':'ig-equ','Favorável':'ig-fav','Moderado':'ig-mod','Desfavorável':'ig-des','Crítico':'ig-cri'};
   const colorGauge={'Crítico':'#330066','Desfavorável':'#ED4D65','Moderado':'#FF9900','Favorável':'#00796B','Equilibrado':'#0097A7'};
 
   const pointer = document.getElementById('eci-pointer');
   const clsLabel = document.getElementById('eci-cls-label');
-  const verResultadoBtn = document.getElementById('eci-ver-resultado');
-  const popupDesc = document.getElementById('eci-popup-desc');
+  const descEl = document.getElementById('eci-popup-desc');
   const segIds = ['ig-cri','ig-des','ig-mod','ig-fav','ig-equ'];
 
-  let selIqa = null, selIet = null;
   let currentAngle = -180;
-
-  function renderPills(container, opts, colors, onPick){
-    opts.forEach(opt=>{
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'eci-pill';
-      btn.textContent = opt;
-      btn.style.setProperty('--pc', colors[opt]);
-      btn.onclick = ()=>{
-        container.querySelectorAll('.eci-pill').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        onPick(opt);
-      };
-      container.appendChild(btn);
-    });
-  }
-  renderPills(document.getElementById('eci-iqa-pills'), IQA_OPTS, IQA_COLORS, v=>{ selIqa=v; update(); });
-  renderPills(document.getElementById('eci-iet-pills'), IET_OPTS, IET_COLORS, v=>{ selIet=v; update(); });
-
   let animGen = 0;
+
   function tweenAngle(from, to, dur, myGen, onDone){
     const t0 = performance.now();
     function ease(t){ return 1-Math.pow(1-t,3); }
@@ -1159,7 +1081,7 @@ document.addEventListener('copy', function(e){
     }
     requestAnimationFrame(frame);
   }
-  // Sobe até o fim da escala, pausa, depois assenta no valor final — mesmo padrão dos gauges do laudo real (app.js: width 0→100% em 1s, pausa 100ms, 100%→valor em 1.5s)
+  // Sobe até o fim da escala, pausa, depois assenta no valor final — mesmo padrão dos gauges do laudo real
   function animatePointer(to, onMid){
     const myGen = ++animGen; // invalida qualquer animação anterior ainda em andamento
     tweenAngle(currentAngle, 0, 1000, myGen, ()=>{
@@ -1172,73 +1094,32 @@ document.addEventListener('copy', function(e){
     return myGen;
   }
 
-  function update(){
-    if(!selIqa || !selIet) return;
-    const cls = calcIntegrado(selIqa, selIet);
+  function selecionar(cls){
     const alvo = angGauge[cls];
 
+    animGen++;
     currentAngle = -180;
     pointer.setAttribute('transform', `rotate(-180,1517,1517)`);
     segIds.forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('active'); });
-    clsLabel.style.color = '';
-    clsLabel.textContent = 'Selecione as classes';
-    abrirLP('eci-overlay');
 
-    animatePointer(alvo, ()=>{
-      const activeEl = document.getElementById(segGauge[cls]);
-      if(activeEl) activeEl.classList.add('active');
-    });
+    document.querySelectorAll('.eci-legend-btn.active').forEach(b=>b.classList.remove('active'));
+    const btn = document.querySelector(`.eci-legend-btn[data-cls="${cls}"]`);
+    if(btn) btn.classList.add('active');
 
-    clsLabel.style.color = colorGauge[cls];
-    clsLabel.textContent = cls;
-    popupDesc.textContent = DESC[cls];
-
-    verResultadoBtn.style.display = 'inline-block';
-  }
-
-  function replay(){
-    if(!selIqa || !selIet) return;
-    const cls = calcIntegrado(selIqa, selIet);
-    const alvo = angGauge[cls];
-    animGen++; // cancela animação em andamento
-    currentAngle = -180; // volta o ponteiro ao início
-    pointer.setAttribute('transform', `rotate(-180,1517,1517)`);
-    segIds.forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('active'); });
     requestAnimationFrame(()=>{
       animatePointer(alvo, ()=>{
         const activeEl = document.getElementById(segGauge[cls]);
         if(activeEl) activeEl.classList.add('active');
       });
     });
+
+    clsLabel.style.color = colorGauge[cls];
+    clsLabel.textContent = cls;
+    descEl.textContent = DESC[cls];
   }
-  document.querySelector('.eci-gauge-card').addEventListener('click', replay);
 
-  verResultadoBtn.addEventListener('click', ()=>{
-    if(!selIqa || !selIet) return;
-    abrirLP('eci-overlay');
-  });
-
-  document.getElementById('eci-limpar').addEventListener('click', ()=>{
-    selIqa = null; selIet = null;
-    jaDesceu = false;
-    animGen++; // cancela qualquer animação em andamento
-
-    document.querySelectorAll('.eci-pill.active').forEach(b=>b.classList.remove('active'));
-    segIds.forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('active'); });
-
-    const t0 = performance.now(), dur = 500, from = currentAngle, to = -180;
-    function ease(t){ return 1-Math.pow(1-t,3); }
-    function frame(now){
-      const p = Math.min(1,(now-t0)/dur);
-      const ang = from + (to-from)*ease(p);
-      pointer.setAttribute('transform', `rotate(${ang},1517,1517)`);
-      if(p<1) requestAnimationFrame(frame); else currentAngle = to;
-    }
-    requestAnimationFrame(frame);
-
-    clsLabel.style.color = '';
-    clsLabel.textContent = 'Selecione as classes';
-    verResultadoBtn.style.display = 'none';
+  document.querySelectorAll('.eci-legend-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> selecionar(btn.dataset.cls));
   });
 })();
 </script>
