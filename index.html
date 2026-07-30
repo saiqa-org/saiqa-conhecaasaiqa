@@ -176,12 +176,14 @@ p{font-size:clamp(.92rem,2.4vw,1.02rem);color:var(--foam)}
 
 /* ---------- ESCALA ECI INTERATIVA ---------- */
 .eci-section{background:radial-gradient(120% 100% at 50% 100%,#132c47 0%,var(--deep) 60%)}
+.eci-section .wrap{position:relative;z-index:6}
 .eci-panel{margin-top:2rem}
-.eci-desc{text-align:center;color:var(--foam);font-size:.9rem;max-width:460px;margin:1.1rem auto 0;min-height:1.4em}
+.eci-desc{text-align:center;color:var(--deep);opacity:.85;font-size:.85rem;margin:.75rem 0 0;min-height:1.4em}
 .eci-nota{text-align:center;color:var(--foam);opacity:.55;font-size:.72rem;max-width:420px;margin:.9rem auto 0;font-style:italic}
 
 /* Card do gadget ECI */
 .eci-gauge-card{
+  position:relative;z-index:6;
   margin-top:1.75rem;background:linear-gradient(160deg, rgba(168,220,232,.90) 0%, rgba(232,247,251,.82) 100%);
   backdrop-filter:blur(10px);border-radius:16px;
   padding:1.5rem 1.25rem 1.1rem;box-shadow:0 20px 44px rgba(0,0,0,.28);
@@ -196,6 +198,7 @@ p{font-size:clamp(.92rem,2.4vw,1.02rem);color:var(--foam)}
 .eci-gauge-readout{text-align:center;margin-top:.6rem;position:relative;z-index:2}
 .eci-gauge-cls{font-family:'Syne',sans-serif;font-weight:800;font-size:1.35rem;transition:color .3s;color:var(--deep)}
 .eci-gauge-cls.eci-hint-text{font-weight:600;font-size:.8rem;opacity:.6;text-transform:none;letter-spacing:0}
+.eci-gauge-side{width:100%}
 .eci-gauge-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem .6rem;font-size:.68rem}
 .eci-legend-btn{
   display:flex;align-items:center;gap:.35rem;font-family:'Syne',sans-serif;font-weight:700;color:var(--deep);
@@ -206,8 +209,12 @@ p{font-size:clamp(.92rem,2.4vw,1.02rem);color:var(--foam)}
 .eci-legend-btn.active{background:rgba(255,255,255,.85);border-color:var(--deep)}
 .eci-legend-btn i{width:9px;height:9px;border-radius:3px;display:inline-block}
 @media(min-width:560px){
-  .eci-gauge-row{flex-direction:row;justify-content:center;gap:2rem}
-  .eci-gauge-legend{flex-direction:column;justify-content:center}
+  .eci-gauge-row{flex-direction:row;justify-content:flex-start;align-items:center;gap:1.75rem}
+  .eci-gauge-wrap{flex-shrink:0}
+  .eci-gauge-legend{flex-direction:column;justify-content:center;flex-shrink:0}
+  .eci-gauge-side{flex:1;min-width:0}
+  .eci-desc{text-align:left}
+  .eci-gauge-readout{text-align:left;margin-top:0;margin-bottom:.5rem}
 }
 .eci-hint{text-align:center;font-size:.85rem;color:var(--foam);opacity:.6;margin-top:1rem}
 
@@ -567,7 +574,7 @@ footer img{width:150px;opacity:.85}
   <div class="eyebrow reveal">Experimente</div>
   <div class="wrap">
     <h2 class="reveal reveal-delay-1">Escala de <span>Classificação Integrada (ECI)</span></h2>
-    <p class="reveal reveal-delay-1">A SAIQA cruza o IQA e o IET numa única leitura ambiental, do Crítico ao Equilibrado. Clique em uma classificação e veja a escala animar.</p>
+    <p class="reveal reveal-delay-1">A SAIQA cruza o IQA e o IET numa única leitura ambiental, do Crítico ao Equilibrado.</p>
 
     <div class="eci-panel reveal reveal-delay-2">
       <div class="eci-gauge-card" style="margin-top:0">
@@ -582,9 +589,6 @@ footer img{width:150px;opacity:.85}
               <path id="eci-pointer" class="eci-gauge-pointer" d="M 2503 1517 L 1517 1555 L 1335 1517 L 1517 1479 Z" transform="rotate(-180,1517,1517)"/>
               <circle class="eci-gauge-cap" cx="1517" cy="1517" r="61"/>
             </svg>
-            <div class="eci-gauge-readout">
-              <div class="eci-gauge-cls eci-hint-text" id="eci-cls-label">Clique na escala ou em uma classificação</div>
-            </div>
           </div>
 
           <div class="eci-gauge-legend">
@@ -594,9 +598,15 @@ footer img{width:150px;opacity:.85}
             <button type="button" class="eci-legend-btn" data-cls="Favorável"><i style="background:#00796B"></i>Favorável</button>
             <button type="button" class="eci-legend-btn" data-cls="Equilibrado"><i style="background:#0097A7"></i>Equilibrado</button>
           </div>
+
+          <div class="eci-gauge-side">
+            <div class="eci-gauge-readout">
+              <div class="eci-gauge-cls eci-hint-text" id="eci-cls-label">Clique na escala ou em uma classificação para ver a interpretação</div>
+            </div>
+            <p id="eci-popup-desc" class="eci-desc"></p>
+          </div>
         </div>
       </div>
-      <p id="eci-popup-desc" class="eci-desc"></p>
       <p class="eci-nota">Demonstração ilustrativa. Na SAIQA de verdade, a classificação e a interpretação são calculadas a partir da sua análise, com muito mais detalhe.</p>
     </div>
   </div>
@@ -1125,8 +1135,6 @@ document.addEventListener('copy', function(e){
     segIds.forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('active'); });
 
     document.querySelectorAll('.eci-legend-btn.active').forEach(b=>b.classList.remove('active'));
-    const btn = document.querySelector(`.eci-legend-btn[data-cls="${cls}"]`);
-    if(btn) btn.classList.add('active');
 
     clsLabel.classList.remove('eci-hint-text');
     clsLabel.style.color = '';
@@ -1135,6 +1143,8 @@ document.addEventListener('copy', function(e){
 
     requestAnimationFrame(()=>{
       animatePointer(alvo, ()=>{
+        const btn = document.querySelector(`.eci-legend-btn[data-cls="${cls}"]`);
+        if(btn) btn.classList.add('active');
         clsLabel.style.color = colorGauge[cls];
         clsLabel.textContent = cls;
         descEl.textContent = DESC[cls];
