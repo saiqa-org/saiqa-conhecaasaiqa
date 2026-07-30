@@ -207,6 +207,8 @@ document.addEventListener('copy', function(e){
     const alvo = angGauge[cls];
     const targetIdx = segIds.indexOf(segGauge[cls]);
 
+    if(window.dataLayer) window.dataLayer.push({ event: 'eci_demo_interacao', event_category: 'demo', event_label: cls });
+
     animGen++;
     currentAngle = -180;
     pointer.setAttribute('transform', `rotate(-180,1517,1517)`);
