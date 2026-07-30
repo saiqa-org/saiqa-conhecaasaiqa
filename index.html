@@ -37,7 +37,7 @@ body{
 h1,h2,h3,.brand{font-family:'Syne',sans-serif;font-weight:800}
 img{max-width:100%;display:block}
 section{position:relative;padding:5rem 1.25rem;overflow:hidden}
-.wrap{width:100%;max-width:760px;margin:0 auto;position:relative;z-index:2}
+.wrap{width:100%;max-width:760px;margin:0 auto;position:relative;z-index:6}
 .eyebrow{font-family:'Syne',sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.5rem;position:absolute;top:1.5rem;left:1.25rem}
 .eyebrow::before{content:'';width:22px;height:2px;background:var(--accent);display:inline-block}
 h2{font-size:clamp(1.6rem,5vw,2.4rem);line-height:1.2;margin-bottom:1.1rem}
@@ -176,7 +176,6 @@ p{font-size:clamp(.92rem,2.4vw,1.02rem);color:var(--foam)}
 
 /* ---------- ESCALA ECI INTERATIVA ---------- */
 .eci-section{background:radial-gradient(120% 100% at 50% 100%,#132c47 0%,var(--deep) 60%)}
-.eci-section .wrap{position:relative;z-index:6}
 .eci-panel{margin-top:2rem}
 .eci-desc{text-align:center;color:var(--deep);opacity:.85;font-size:.85rem;margin:.75rem 0 0;min-height:1.4em}
 .eci-nota{text-align:center;color:var(--foam);opacity:.55;font-size:.72rem;max-width:420px;margin:.9rem auto 0;font-style:italic}
@@ -233,12 +232,14 @@ p{font-size:clamp(.92rem,2.4vw,1.02rem);color:var(--foam)}
 .autora h2{color:var(--ocean)}
 .autora h2 span{color:var(--aqua)}
 .autora-foto{
-  width:140px;height:140px;border-radius:50%;object-fit:cover;
-  margin:.5rem 0 1.25rem;border:3px solid var(--aqua);
+  width:110px;height:110px;border-radius:50%;
+  background-image:url('foto-autora.jpg');background-size:cover;background-position:center;
+  margin:0 0 .85rem;border:3px solid var(--aqua);
   box-shadow:0 0 0 6px rgba(65,184,213,.15),0 12px 28px rgba(10,22,40,.25);
+  -webkit-user-drag:none;user-select:none;-webkit-touch-callout:none;
 }
 .autora-bio{max-width:640px;color:#3d5568}
-.autora-bio + .autora-bio{margin-top:1rem}
+.autora-bio + .autora-bio{margin-top:.65rem}
 .autora-bio b{color:var(--deep)}
 .autora-contact-label{
   font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
@@ -647,7 +648,7 @@ footer img{width:150px;opacity:.85}
   <div class="eyebrow reveal">Bastidores</div>
   <div class="wrap">
     <h2 class="reveal reveal-delay-1">Por trás <span>da SAIQA</span></h2>
-    <img class="autora-foto reveal reveal-delay-1" src="foto-autora.jpg" alt="Andrezza Rosa">
+    <div class="autora-foto reveal reveal-delay-1" role="img" aria-label="Andrezza Rosa" oncontextmenu="return false"></div>
     <p class="autora-bio reveal reveal-delay-1">Sou Andrezza Rosa, fascinada pela tecnologia aplicada ao campo e apaixonada pela área ambiental. Embora minha primeira formação tenha sido em Tecnologia em Marketing, foi na Engenharia Agrícola e Ambiental que encontrei minha verdadeira vocação.</p>
     <p class="autora-bio reveal reveal-delay-2">A SAIQA foi desenvolvida durante a elaboração do meu Trabalho de Conclusão de Curso em Engenharia Agrícola e Ambiental, na Universidade Federal Rural do Semiárido (UFERSA), no semestre 2026.1. O projeto surgiu da necessidade de simplificar os cálculos dos índices IQA e IET e de oferecer interpretações ambientais mais completas e acessíveis. Desde sua concepção, foi pensado para atender diferentes públicos, desde estudantes em processo de aprendizagem até pesquisadores, técnicos e gestores que necessitam de informações confiáveis para apoiar análises e tomadas de decisão.</p>
     <p class="autora-bio reveal reveal-delay-3">A SAIQA segue em constante evolução. Continuo me aperfeiçoando para desenvolver uma versão ainda mais completa da ferramenta, incorporando novos recursos e ampliando suas possibilidades de aplicação na avaliação da qualidade ambiental.</p>
