@@ -1082,20 +1082,39 @@ document.addEventListener('copy', function(e){
     requestAnimationFrame(frame);
   }
   // Sobe até o fim da escala, pausa, depois assenta no valor final — mesmo padrão dos gauges do laudo real
-  function animatePointer(to, onMid){
+  function animatePointer(to, onDone){
     const myGen = ++animGen; // invalida qualquer animação anterior ainda em andamento
     tweenAngle(currentAngle, 0, 1000, myGen, ()=>{
-      if(onMid) onMid();
       setTimeout(()=>{
         if(myGen !== animGen) return;
-        tweenAngle(0, to, 1500, myGen);
+        tweenAngle(0, to, 1500, myGen, onDone);
       }, 100);
     });
     return myGen;
   }
 
+  let segTimers = [];
+  // Cascata dos segmentos tipo roleta, desacelerando até parar no alvo — mesmo efeito do gauge real
+  function cascataSegmentos(targetIdx){
+    segTimers.forEach(t=>clearTimeout(t));
+    segTimers = [];
+    const nSeg = segIds.length;
+    let cum = 0;
+    for(let i=0;i<14;i++){
+      const delay = 50 + 260*Math.pow(i/13,2);
+      const idx = i===13 ? targetIdx : (((targetIdx-(13-i))%nSeg)+nSeg*10)%nSeg;
+      segTimers.push(setTimeout(()=>{
+        segIds.forEach(id=>{ const el=document.getElementById(id); if(el) el.classList.remove('active'); });
+        const el = document.getElementById(segIds[idx]);
+        if(el) el.classList.add('active');
+      }, cum));
+      cum += delay;
+    }
+  }
+
   function selecionar(cls){
     const alvo = angGauge[cls];
+    const targetIdx = segIds.indexOf(segGauge[cls]);
 
     animGen++;
     currentAngle = -180;
@@ -1106,16 +1125,18 @@ document.addEventListener('copy', function(e){
     const btn = document.querySelector(`.eci-legend-btn[data-cls="${cls}"]`);
     if(btn) btn.classList.add('active');
 
+    clsLabel.style.color = '';
+    clsLabel.textContent = '…';
+    descEl.textContent = '';
+
     requestAnimationFrame(()=>{
       animatePointer(alvo, ()=>{
-        const activeEl = document.getElementById(segGauge[cls]);
-        if(activeEl) activeEl.classList.add('active');
+        clsLabel.style.color = colorGauge[cls];
+        clsLabel.textContent = cls;
+        descEl.textContent = DESC[cls];
       });
+      cascataSegmentos(targetIdx);
     });
-
-    clsLabel.style.color = colorGauge[cls];
-    clsLabel.textContent = cls;
-    descEl.textContent = DESC[cls];
   }
 
   document.querySelectorAll('.eci-legend-btn').forEach(btn=>{
